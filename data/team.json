@@ -1,0 +1,52 @@
+{
+  "team": [
+    {
+      "name": "[[EDIT THIS]] Alex Thompson",
+      "title": "General Manager",
+      "bio": "Oversees day-to-day operations and ensures every guest feels welcomed.",
+      "experience": "18 years automotive retail",
+      "languages": "English, Spanish",
+      "photo": "/assets/vehicles/vehicle-1.svg"
+    },
+    {
+      "name": "[[EDIT THIS]] Maya Chen",
+      "title": "Sales Director",
+      "bio": "Specializes in matching shoppers with the right vehicles for their lifestyle.",
+      "experience": "12 years vehicle sales",
+      "languages": "English, Mandarin",
+      "photo": "/assets/vehicles/vehicle-3.svg"
+    },
+    {
+      "name": "[[EDIT THIS]] Robert Ellis",
+      "title": "Finance Manager",
+      "bio": "Guides guests through financing options with transparency and clarity.",
+      "experience": "10 years finance & insurance",
+      "languages": "English",
+      "photo": "/assets/vehicles/vehicle-5.svg"
+    },
+    {
+      "name": "[[EDIT THIS]] Sofia Martinez",
+      "title": "Customer Care Lead",
+      "bio": "Ensures service appointments and follow-ups are handled promptly.",
+      "experience": "8 years customer service",
+      "languages": "English, Spanish",
+      "photo": "/assets/vehicles/vehicle-7.svg"
+    },
+    {
+      "name": "[[EDIT THIS]] Devon Brooks",
+      "title": "Inventory Manager",
+      "bio": "Keeps the lot organized and vehicles photo-ready for online shoppers.",
+      "experience": "9 years vehicle merchandising",
+      "languages": "English",
+      "photo": "/assets/vehicles/vehicle-9.svg"
+    },
+    {
+      "name": "[[EDIT THIS]] Hannah Lee",
+      "title": "Digital Experience Specialist",
+      "bio": "Maintains the website listings and virtual walkarounds.",
+      "experience": "6 years digital retail",
+      "languages": "English, Korean",
+      "photo": "/assets/vehicles/vehicle-11.svg"
+    }
+  ]
+}

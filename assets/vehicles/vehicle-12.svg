@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="533" viewBox="0 0 800 533" role="img" aria-label="Placeholder vehicle image">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B5CAD" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#E63946" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="533" fill="#e5ecf7"/>
+  <rect x="40" y="140" width="720" height="260" rx="48" fill="url(#gradient)"/>
+  <text x="400" y="320" text-anchor="middle" font-family="'Inter', sans-serif" font-size="48" fill="#1F2937" font-weight="700">[[VEHICLE PHOTO]]</text>
+</svg>

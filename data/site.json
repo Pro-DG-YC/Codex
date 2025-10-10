@@ -1,0 +1,21 @@
+{
+  "dealerName": "American Auto Network LLC",
+  "phone": "(555) 123-4567",
+  "email": "sales@example.com",
+  "address": "1234 Main St, Your City, ST 00000",
+  "hours": {
+    "monday": "9:00 AM – 6:00 PM",
+    "tuesday": "9:00 AM – 6:00 PM",
+    "wednesday": "9:00 AM – 6:00 PM",
+    "thursday": "9:00 AM – 6:00 PM",
+    "friday": "9:00 AM – 6:00 PM",
+    "saturday": "10:00 AM – 4:00 PM",
+    "sunday": "Closed"
+  },
+  "social": {
+    "facebook": "#",
+    "instagram": "#",
+    "tiktok": "#"
+  },
+  "mapEmbedUrl": "#"
+}

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Auction Access Plans | American Auto Network LLC</title>
+  <meta name="description" content="Explore Auction Access membership plans from American Auto Network LLC. Choose nationwide coverage, concierge support, and compliance add-ons." />
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <div class="navbar">
+      <a class="logo" href="/index.html">
+        <img src="/assets/logo.svg" alt="American Auto Network LLC logo" width="120" height="36" />
+        <span data-site-name>American Auto Network LLC</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+      <nav id="primary-navigation">
+        <a aria-current="page" href="/inventory.html">Access Plans</a>
+        <a href="/financing.html">Pricing &amp; Financing</a>
+        <a href="/trade-in.html">Dealer Setup</a>
+        <a href="/about.html">About</a>
+        <a href="/testimonials.html">Testimonials</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/terms.html">Terms</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <header style="margin-bottom:2rem;">
+      <p><a href="/index.html">Home</a> / Access Plans</p>
+      <h1>Nationwide Auction Access Plans</h1>
+      <p>Review our membership options and concierge services. Filter by state coverage, services, and price to build the plan you need.</p>
+    </header>
+
+    <section class="inventory-layout" aria-label="Access plan results">
+      <aside>
+        <form id="inventoryFilters" class="filter-panel" aria-label="Access plan filters">
+          <div class="filters-inline">
+            <label>
+              <span>Search</span>
+              <input type="search" name="search" placeholder="e.g. Georgia Auction Access" />
+            </label>
+            <label>
+              <span>State Coverage</span>
+              <select name="make">
+                <option value="">All states</option>
+              </select>
+            </label>
+            <label>
+              <span>Service Tier</span>
+              <select name="model">
+                <option value="">All tiers</option>
+              </select>
+            </label>
+            <label>
+              <span>Delivery Type</span>
+              <select name="bodyStyle">
+                <option value="">All delivery types</option>
+              </select>
+            </label>
+            <label>
+              <span>Processing</span>
+              <select name="transmission">
+                <option value="">Any</option>
+              </select>
+            </label>
+            <label>
+              <span>Support Level</span>
+              <select name="drivetrain">
+                <option value="">Any</option>
+              </select>
+            </label>
+          </div>
+
+          <details>
+            <summary>Pricing &amp; Timeline</summary>
+            <div class="filters-inline">
+              <label>
+                <span>Min Price</span>
+                <input type="number" name="minPrice" min="0" step="500" placeholder="0" />
+              </label>
+              <label>
+                <span>Max Price</span>
+                <input type="number" name="maxPrice" min="0" step="500" placeholder="50000" />
+              </label>
+              <label>
+                <span>Earliest Start Year</span>
+                <input type="number" name="minYear" min="1990" max="2030" placeholder="2024" />
+              </label>
+              <label>
+                <span>Latest Start Year</span>
+                <input type="number" name="maxYear" min="1990" max="2030" placeholder="2025" />
+              </label>
+              <label>
+                <span>Max Processing Days</span>
+                <input type="number" name="maxMileage" min="0" step="1" placeholder="30" />
+              </label>
+              <label>
+                <span>Min Processing Days</span>
+                <input type="number" name="minMileage" min="0" step="1" placeholder="0" />
+              </label>
+            </div>
+          </details>
+
+          <details>
+            <summary>Delivery &amp; Compliance</summary>
+            <div class="filters-inline">
+              <label>
+                <span>Packet Type</span>
+                <select name="colorExterior">
+                  <option value="">Any</option>
+                </select>
+              </label>
+              <label>
+                <span>Support Add-On</span>
+                <select name="colorInterior">
+                  <option value="">Any</option>
+                </select>
+              </label>
+              <label>
+                <span>Support Channel</span>
+                <select name="fuelType">
+                  <option value="">Any</option>
+                </select>
+              </label>
+            </div>
+          </details>
+
+          <details open>
+            <summary>Popular Membership Benefits</summary>
+            <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:0.75rem;" data-feature-list>
+              <p>No features yet.</p>
+            </div>
+          </details>
+
+          <label>
+            <input type="checkbox" name="certified" /> Include compliance add-ons only
+          </label>
+          <label>
+            <input type="checkbox" name="oneOwner" /> Highlight concierge fast-track plans
+          </label>
+
+          <label>
+            <span>Sort by</span>
+            <select name="sort">
+              <option value="newest">Newest published</option>
+              <option value="price-asc">Price (low to high)</option>
+              <option value="year-desc">Start date (latest first)</option>
+              <option value="mileage-asc">Processing days (low to high)</option>
+            </select>
+          </label>
+        </form>
+      </aside>
+
+      <section class="inventory-results">
+        <div class="section-heading">
+          <h2>Plan Results</h2>
+          <p data-results-count>Loading…</p>
+        </div>
+        <div class="inventory-list" data-inventory-list>
+          <p>Loading plans…</p>
+        </div>
+        <div class="pagination">
+          <button type="button" class="btn-secondary modal-hidden" data-load-more><span>Show more</span></button>
+        </div>
+      </section>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-top">
+        <div>
+          <img src="/assets/logo.svg" alt="American Auto Network LLC logo" width="140" height="40" />
+          <p>[[EDIT THIS]] Your trusted partner for nationwide Auction Access and compliance support.</p>
+          <ul data-social class="grid" style="list-style:none; padding:0; margin:0;"></ul>
+        </div>
+        <div>
+          <h3>Visit</h3>
+          <p data-site-address>1234 Main St, Your City, ST 00000</p>
+          <p><a data-site-phone href="tel:5551234567">(555) 123-4567</a></p>
+          <p><a data-site-email href="mailto:sales@example.com">sales@example.com</a></p>
+        </div>
+        <div>
+          <h3>Hours</h3>
+          <table class="table-hours" aria-label="Footer hours">
+            <tbody data-hours></tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Saved Plans (<span data-saved-count>0</span>)</h3>
+          <div data-saved-list class="grid" style="gap:0.75rem"></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span data-year></span> <span data-site-name>American Auto Network LLC</span>. All rights reserved.</span>
+        <div style="display:flex; gap:1rem;">
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Use</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="compare-drawer" data-compare-drawer>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+      <h3 style="margin:0;">Compare Plans</h3>
+      <button type="button" data-compare-clear class="btn-secondary">Clear</button>
+    </div>
+    <div data-compare-content></div>
+  </div>
+  <script type="module" src="/js/utils.js"></script>
+  <script type="module" src="/js/site.js"></script>
+  <script type="module" src="/js/inventory.js"></script>
+</body>
+</html>

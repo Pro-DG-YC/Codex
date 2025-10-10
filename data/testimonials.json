@@ -1,0 +1,46 @@
+{
+  "testimonials": [
+    {
+      "name": "Jordan P.",
+      "rating": 5,
+      "quote": "[[EDIT THIS]] The concierge handled every step of my Auction Access application in under 48 hours.",
+      "source": "Google Reviews"
+    },
+    {
+      "name": "Amelia R.",
+      "rating": 5,
+      "quote": "[[EDIT THIS]] They walked me through fingerprints, bonding, and my first auction without missing a beat.",
+      "source": "Facebook"
+    },
+    {
+      "name": "Marcus L.",
+      "rating": 4,
+      "quote": "[[EDIT THIS]] Financing the membership was easy and I was bidding the same week.",
+      "source": "DealerRater"
+    },
+    {
+      "name": "Priya D.",
+      "rating": 5,
+      "quote": "[[EDIT THIS]] Renewing our multi-state Auction Access was seamless thanks to their compliance team.",
+      "source": "Google Reviews"
+    },
+    {
+      "name": "Hannah W.",
+      "rating": 5,
+      "quote": "[[EDIT THIS]] I appreciate the clear checklists and on-call support whenever I have questions.",
+      "source": "Yelp"
+    },
+    {
+      "name": "Carlos M.",
+      "rating": 4,
+      "quote": "[[EDIT THIS]] They coordinated insurance, bond, and onboarding so our wholesale team could focus on buying.",
+      "source": "Google Reviews"
+    },
+    {
+      "name": "Lena S.",
+      "rating": 5,
+      "quote": "[[EDIT THIS]] The training videos and live Zoom sessions made me confident before my first auction.",
+      "source": "Website Form"
+    }
+  ]
+}
