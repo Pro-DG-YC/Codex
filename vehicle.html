@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Auction Access Plan | American Auto Network LLC</title>
+  <meta name="description" content="Auction Access plan details from American Auto Network LLC." />
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <div class="navbar">
+      <a class="logo" href="/index.html">
+        <img src="/assets/logo.svg" alt="American Auto Network LLC logo" width="120" height="36" />
+        <span data-site-name>American Auto Network LLC</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+      <nav id="primary-navigation">
+        <a href="/inventory.html">Access Plans</a>
+        <a href="/financing.html">Pricing &amp; Financing</a>
+        <a href="/trade-in.html">Dealer Setup</a>
+        <a href="/about.html">About</a>
+        <a href="/testimonials.html">Testimonials</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/terms.html">Terms</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <nav aria-label="Breadcrumb" data-breadcrumb></nav>
+    <header style="margin-bottom:1.5rem;">
+      <h1 data-vehicle-heading>Loading plan…</h1>
+      <div class="badges" data-hero-badges></div>
+      <div style="margin-top:0.75rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+        <button class="saved-toggle" type="button" data-save-vehicle aria-pressed="false"><span>Save</span></button>
+        <button class="saved-toggle" type="button" data-compare-toggle aria-pressed="false"><span>Compare</span></button>
+      </div>
+    </header>
+
+    <section class="grid" style="gap:2rem;">
+      <div>
+        <div class="gallery">
+          <div class="gallery-main" data-gallery-main>
+            <div class="placeholder-image">Loading images…</div>
+          </div>
+          <div class="gallery-thumbs" data-gallery-thumbs></div>
+        </div>
+      </div>
+      <aside class="sticky-cta" data-sticky-cta></aside>
+    </section>
+
+    <section aria-labelledby="vehicle-details" style="margin-top:2.5rem;">
+      <h2 id="vehicle-details">Plan Highlights</h2>
+      <div data-vehicle-details>
+        <p>Loading specs…</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="vehicle-features" style="margin-top:2rem;">
+      <h2 id="vehicle-features">Included Services</h2>
+      <ul class="feature-list" data-features></ul>
+    </section>
+
+    <section aria-labelledby="vehicle-specs" style="margin-top:2rem;">
+      <h2 id="vehicle-specs">Plan Overview</h2>
+      <table class="table-specs">
+        <tbody data-specs></tbody>
+      </table>
+    </section>
+
+    <section id="schedule" aria-labelledby="schedule-heading" style="margin-top:2.5rem;">
+      <h2 id="schedule-heading">Schedule Your Onboarding Call</h2>
+      <p>[[EDIT THIS]] Choose a time to review requirements, document checklists, and next steps.</p>
+      <form data-simple-form>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem;">
+          <label>Full Name<input type="text" name="name" required /></label>
+          <label>Email<input type="email" name="email" required /></label>
+          <label>Phone<input type="tel" name="phone" required /></label>
+          <label>Preferred Onboarding Date<input type="date" name="date" required /></label>
+          <label>Preferred Time<input type="time" name="time" required /></label>
+        </div>
+        <label>Comments<textarea name="comments" rows="3" placeholder="Anything we should know?" ></textarea></label>
+        <label><input type="checkbox" name="consent" required /> I agree to be contacted about Auction Access onboarding.</label>
+        <button type="submit" class="btn-primary">Schedule Call</button>
+        <div data-form-status></div>
+        <p class="print-note">Need to connect this form to your CRM? See the README for integration tips.</p>
+      </form>
+    </section>
+
+    <section id="financing" aria-labelledby="financing-heading" style="margin-top:2.5rem;">
+      <h2 id="financing-heading">Pricing &amp; Financing</h2>
+      <p>[[EDIT THIS]] Review membership pricing, payment plans, and optional compliance services.</p>
+      <a class="btn-primary" href="/financing.html">See pricing &amp; financing details</a>
+    </section>
+
+    <section id="quote" aria-labelledby="quote-heading" style="margin-top:2.5rem;">
+      <h2 id="quote-heading">Request a Document Checklist</h2>
+      <p>[[EDIT THIS]] We'll send a step-by-step checklist covering fingerprints, bonds, insurance, and Auction Access submissions.</p>
+      <a class="btn-secondary" href="/contact.html">Contact our concierge team</a>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-top">
+        <div>
+          <img src="/assets/logo.svg" alt="American Auto Network LLC logo" width="140" height="40" />
+          <p>[[EDIT THIS]] Your trusted partner for nationwide Auction Access and compliance support.</p>
+          <ul data-social class="grid" style="list-style:none; padding:0; margin:0;"></ul>
+        </div>
+        <div>
+          <h3>Visit</h3>
+          <p data-site-address>1234 Main St, Your City, ST 00000</p>
+          <p><a data-site-phone href="tel:5551234567">(555) 123-4567</a></p>
+          <p><a data-site-email href="mailto:sales@example.com">sales@example.com</a></p>
+        </div>
+        <div>
+          <h3>Hours</h3>
+          <table class="table-hours" aria-label="Footer hours">
+            <tbody data-hours></tbody>
+          </table>
+        </div>
+        <div>
+          <h3>Saved Plans (<span data-saved-count>0</span>)</h3>
+          <div data-saved-list class="grid" style="gap:0.75rem"></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span data-year></span> <span data-site-name>American Auto Network LLC</span>. All rights reserved.</span>
+        <div style="display:flex; gap:1rem;">
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Use</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="lightbox modal-hidden" data-lightbox>
+    <button type="button" class="btn-secondary" data-lightbox-close>Close</button>
+    <img data-lightbox-img src="" alt="" />
+  </div>
+  <script type="module" src="/js/utils.js"></script>
+  <script type="module" src="/js/site.js"></script>
+  <script type="module" src="/js/forms.js"></script>
+  <script type="module" src="/js/vehicle.js"></script>
+</body>
+</html>

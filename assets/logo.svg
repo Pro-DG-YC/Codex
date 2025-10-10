@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="48" viewBox="0 0 160 48" role="img" aria-labelledby="title desc">
+  <title id="title">American Auto Network LLC placeholder logo</title>
+  <desc id="desc">Stylized lettermark with a road icon.</desc>
+  <rect width="160" height="48" rx="12" fill="#0B5CAD"/>
+  <path d="M24 34L16 14h4l4 10 4-10h4l-8 20z" fill="#ffffff"/>
+  <text x="48" y="30" font-family="'Inter', sans-serif" font-size="16" fill="#ffffff" font-weight="700">American Auto</text>
+</svg>
