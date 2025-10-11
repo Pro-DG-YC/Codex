@@ -164,16 +164,15 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
-    text-align: right;
+    align-items: flex-start;
+    text-align: left;
     padding: 2rem 1.5rem;
     gap: 1rem;
-    background: linear-gradient(270deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.55) 60%, rgba(0, 0, 0, 0.7) 100%);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.55) 45%, rgba(0, 0, 0, 0.15) 100%);
 }
 
 .hero__texto > * {
     width: min(32rem, 100%);
-    margin-left: auto;
 }
 
 .hero__texto h1 {
@@ -489,16 +488,14 @@ img {
     }
 
     .hero__texto {
-        padding-right: 8%;
+        padding-left: 8%;
     }
 
     .hero__texto h1 {
         max-width: 520px;
-        margin-left: auto;
     }
 
     .hero__texto p {
         max-width: 420px;
-        margin-left: auto;
     }
 }
