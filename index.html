@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="meta.title">Pro-DG | Agencia de marketing digital y media buying</title>
+  <meta name="description" content="Agencia de marketing digital y media buying en Nicaragua y Estados Unidos. Estrategias bilingües que generan crecimiento real." data-i18n="meta.description">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://www.pro-dg.example/">
+  <meta property="og:title" content="Pro-DG | Digital Marketing & Media Buying" data-i18n="meta.ogTitle">
+  <meta property="og:description" content="Digital marketing and media buying agency delivering growth in Nicaragua and the United States." data-i18n="meta.ogDescription">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.pro-dg.example/">
+  <meta property="og:image" content="https://www.pro-dg.example/assets/img/hero-abstract.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pro-DG | Digital Marketing & Media Buying" data-i18n="meta.twitterTitle">
+  <meta name="twitter:description" content="Digital marketing and media buying agency delivering growth in Nicaragua and the United States." data-i18n="meta.twitterDescription">
+  <meta name="twitter:image" content="https://www.pro-dg.example/assets/img/hero-abstract.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/icon-generic.svg">
+  <!-- Production: provide PNG favicons (16/32/48) and apple-touch-icon.png in assets/icons/. -->
+  <link rel="mask-icon" href="assets/icons/mask-icon.svg" color="#0b1324">
+  <meta name="theme-color" content="#070f1f">
+  <style>
+    /* Critical CSS: Header + Hero for above-the-fold */
+    :root {
+      color-scheme: light;
+      --color-navy: #0b1324;
+      --color-deep: #070f1f;
+      --color-gold: #c7a258;
+      --color-gray: #5b6475;
+      --color-white: #ffffff;
+      --max-width: 1200px;
+      --shadow-soft: 0 20px 40px rgba(7, 15, 31, 0.25);
+      --radius-lg: 16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--color-deep);
+      color: var(--color-white);
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(16px);
+      background-color: rgba(11, 19, 36, 0.92);
+    }
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 auto;
+      max-width: var(--max-width);
+      padding: 0.75rem 1.5rem;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .brand img { width: 44px; height: auto; }
+    .hero {
+      position: relative;
+      display: grid;
+      align-items: center;
+      justify-items: start;
+      min-height: 90vh;
+      padding: 6rem 1.5rem 4rem;
+      background: radial-gradient(circle at top right, rgba(199, 162, 88, 0.14), transparent 55%), linear-gradient(135deg, rgba(7,15,31,0.95), rgba(11,19,36,0.85)), url('assets/img/hero-abstract.svg');
+      background-size: cover;
+      background-position: center;
+      text-align: left;
+    }
+    .hero-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      gap: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      line-height: 1.1;
+      margin: 0;
+    }
+    .hero p {
+      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+      color: rgba(255,255,255,0.88);
+      margin: 0;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .btn {
+      font-weight: 600;
+      border-radius: var(--radius-lg);
+      padding: 0.85rem 1.5rem;
+      border: 1px solid transparent;
+      transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--color-gold);
+      color: var(--color-navy);
+      box-shadow: var(--shadow-soft);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--color-white);
+      border-color: rgba(255,255,255,0.4);
+    }
+    .btn:focus-visible {
+      outline: 3px solid var(--color-gold);
+      outline-offset: 2px;
+    }
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+    }
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: #d7b26a;
+    }
+    .btn-outline:hover,
+    .btn-outline:focus-visible {
+      border-color: var(--color-gold);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero { min-height: 80vh; padding-top: 5.5rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Production build: inline & minify CSS/JS via your preferred pipeline (e.g. esbuild, lightningcss). -->
+  <script>
+    document.documentElement.classList.remove('no-js');
+  </script>
+</head>
+<body>
+  <header>
+    <div class="nav-bar" role="navigation" aria-label="Principal">
+      <a href="#inicio" class="brand">
+        <img src="assets/img/pro-dg-logo.svg" alt="Pro-DG logo">
+        <span data-i18n="brand.name">Pro-DG</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu" aria-label="Abrir navegación" data-i18n-aria-label-open="nav.toggle.open" data-i18n-aria-label-close="nav.toggle.close">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+      <nav id="primary-menu" class="nav-links" aria-label="Main menu">
+        <ul>
+          <li><a href="#servicios" data-i18n="nav.services">Servicios</a></li>
+          <li><a href="#casos" data-i18n="nav.results">Casos</a></li>
+          <li><a href="#proceso" data-i18n="nav.process">Proceso</a></li>
+          <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+          <li><a href="#testimonios" data-i18n="nav.testimonials">Testimonios</a></li>
+          <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="lang-toggle" aria-label="Cambiar idioma" data-i18n="nav.language" data-i18n-aria-label="nav.languageLabel">ES / EN</button>
+        <a class="btn btn-primary" href="#contacto" data-i18n="nav.cta">Solicitar cotización</a>
+      </div>
+    </div>
+  </header>
+  <main id="inicio">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="hero-label" data-i18n="hero.badge" role="text">Agencia full-service</div>
+        <h1 id="hero-title" data-i18n="hero.title">Marketing que impulsa resultados reales.</h1>
+        <p data-i18n="hero.subtitle">Media Buying, creatividad y tecnología para crecer en Nicaragua y Estados Unidos.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#servicios" data-i18n="hero.ctaPrimary">Ver servicios</a>
+          <a class="btn btn-outline" href="#contacto" data-i18n="hero.ctaSecondary">Solicitar cotización</a>
+        </div>
+        <dl class="hero-metrics" aria-label="Resultados destacados">
+          <div>
+            <dt data-i18n="hero.metric1">+150 campañas optimizadas</dt>
+            <dd data-i18n="hero.metric1Desc">Performance para marcas en NI &amp; USA</dd>
+          </div>
+          <div>
+            <dt data-i18n="hero.metric2">Equipo bilingüe senior</dt>
+            <dd data-i18n="hero.metric2Desc">Media buyers, creativos y analistas</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="servicios" class="section section-light" aria-labelledby="services-title">
+      <div class="section-header">
+        <span class="section-kicker" data-i18n="services.kicker">Qué hacemos</span>
+        <h2 id="services-title" data-i18n="services.title">Servicios integrales</h2>
+        <p data-i18n="services.description">Combinamos creatividad, data y medios pagados para entregar crecimiento sostenible.</p>
+      </div>
+      <div class="grid services-grid">
+        <!-- Each service card uses reusable component classes -->
+        <article class="card service-card">
+          <img src="assets/icons/icon-generic.svg" alt="" aria-hidden="true" loading="lazy">
+          <h3 data-i18n="services.design.title">Diseño gráfico</h3>
+          <p data-i18n="services.design.copy">Identidades visuales, branding y piezas que conectan con audiencias bilingües.</p>
+          <a href="#contacto" class="card-link" data-i18n="services.cta">Más detalles</a>
+        </article>
+        <article class="card service-card">
+          <img src="assets/icons/icon-generic.svg" alt="" aria-hidden="true" loading="lazy">
+          <h3 data-i18n="services.photo.title">Sesión de fotos y video</h3>
+          <p data-i18n="services.photo.copy">Producción onsite y en estudio para captar historias que venden productos y servicios.</p>
+          <a href="#contacto" class="card-link" data-i18n="services.cta">Más detalles</a>
+        </article>
+        <article class="card service-card">
+          <img src="assets/icons/icon-generic.svg" alt="" aria-hidden="true" loading="lazy">
+          <h3 data-i18n="services.production.title">Producción audiovisual</h3>
+          <p data-i18n="services.production.copy">Campañas 360° con guión, locución, motion graphics y edición enfocada en resultados.</p>
+          <a href="#contacto" class="card-link" data-i18n="services.cta">Más detalles</a>
+        </article>
+        <article class="card service-card">
+          <img src="assets/icons/icon-generic.svg" alt="" aria-hidden="true" loading="lazy">
+          <h3 data-i18n="services.web.title">Sitios web</h3>
+          <p data-i18n="services.web.copy">Experiencias rápidas y medibles integradas con CRM y automatizaciones.</p>
+          <a href="#contacto" class="card-link" data-i18n="services.cta">Más detalles</a>
+        </article>
+        <article class="card service-card">
+          <img src="assets/icons/icon-generic.svg" alt="" aria-hidden="true" loading="lazy">
+          <h3 data-i18n="services.meta.title">Meta / Google Ads</h3>
+          <p data-i18n="services.meta.copy">Optimización continua, audiencias personalizadas y reporting claro para stakeholders.</p>
+          <a href="#contacto" class="card-link" data-i18n="services.cta">Más detalles</a>
+        </article>
+        <article class="card service-card">
+          <img src="assets/icons/icon-generic.svg" alt="" aria-hidden="true" loading="lazy">
+          <h3 data-i18n="services.ppc.title">PPC Campaigns / Media Buying</h3>
+          <p data-i18n="services.ppc.copy">Planes multicanal con foco en ROAS, atribución y escalabilidad en dos mercados.</p>
+          <a href="#contacto" class="card-link" data-i18n="services.cta">Más detalles</a>
+        </article>
+      </div>
+      <div class="section-footer" data-i18n="services.note">*Todos los servicios incluyen estrategia, medición y soporte bilingüe.</div>
+    </section>
+
+    <section id="casos" class="section" aria-labelledby="results-title">
+      <div class="section-header">
+        <span class="section-kicker" data-i18n="results.kicker">Resultados</span>
+        <h2 id="results-title" data-i18n="results.title">Casos de éxito recientes</h2>
+      </div>
+      <div class="grid results-grid">
+        <article class="card result-card">
+          <img src="assets/img/placeholder-image.svg" alt="" loading="lazy">
+          <div class="card-body">
+            <h3 data-i18n="results.case1.title">E-commerce retail</h3>
+            <p data-i18n="results.case1.copy">↑230% ROAS en 90 días combinando paid social, search y automatizaciones.</p>
+          </div>
+        </article>
+        <article class="card result-card">
+          <img src="assets/img/placeholder-image.svg" alt="" loading="lazy">
+          <div class="card-body">
+            <h3 data-i18n="results.case2.title">Educación superior</h3>
+            <p data-i18n="results.case2.copy">↓45% CPA con funnels bilingües para leads internacionales.</p>
+          </div>
+        </article>
+        <article class="card result-card">
+          <img src="assets/img/placeholder-image.svg" alt="" loading="lazy">
+          <div class="card-body">
+            <h3 data-i18n="results.case3.title">Servicios financieros</h3>
+            <p data-i18n="results.case3.copy">↑120% leads calificados gracias a campañas de performance y CRO.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="proceso" class="section section-light" aria-labelledby="process-title">
+      <div class="section-header">
+        <span class="section-kicker" data-i18n="process.kicker">Cómo trabajamos</span>
+        <h2 id="process-title" data-i18n="process.title">Proceso probado en 4 etapas</h2>
+      </div>
+      <ol class="process-steps" role="list">
+        <li>
+          <h3 data-i18n="process.step1.title">Descubrimiento</h3>
+          <p data-i18n="process.step1.copy">Workshops para mapear objetivos, audiencias y datos disponibles.</p>
+        </li>
+        <li>
+          <h3 data-i18n="process.step2.title">Estrategia</h3>
+          <p data-i18n="process.step2.copy">Roadmap multicanal, budget allocation y KPI claros.</p>
+        </li>
+        <li>
+          <h3 data-i18n="process.step3.title">Producción</h3>
+          <p data-i18n="process.step3.copy">Creatividades, landing pages y automatizaciones listas para lanzar.</p>
+        </li>
+        <li>
+          <h3 data-i18n="process.step4.title">Optimización</h3>
+          <p data-i18n="process.step4.copy">Testing continuo, reporting transparente y escalamientos seguros.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="enfoque" class="section" aria-labelledby="approach-title">
+      <div class="section-header">
+        <span class="section-kicker" data-i18n="approach.kicker">Enfoque</span>
+        <h2 id="approach-title" data-i18n="approach.title">Estrategia conectada end-to-end</h2>
+        <p data-i18n="approach.description">Activamos un stack integrado de medios, creatividad y datos para impactar todo el funnel.</p>
+      </div>
+      <div class="approach-layout">
+        <div class="chip-group" role="list">
+          <span class="chip" role="listitem" data-i18n="approach.chip1">Performance first</span>
+          <span class="chip" role="listitem" data-i18n="approach.chip2">Creatividad data-driven</span>
+          <span class="chip" role="listitem" data-i18n="approach.chip3">Automatización</span>
+          <span class="chip" role="listitem" data-i18n="approach.chip4">Analytics en vivo</span>
+        </div>
+        <div class="tabs" role="tablist" data-i18n-aria-label="approach.tabs.label" aria-label="Áreas clave">
+          <button class="tab is-active" role="tab" aria-selected="true" aria-controls="tab-panel-media" id="tab-media" data-i18n="approach.tabs.media">Paid Media</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-panel-creative" id="tab-creative" data-i18n="approach.tabs.creative">Creatividad</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-panel-tech" id="tab-tech" data-i18n="approach.tabs.tech">Tecnología</button>
+        </div>
+        <div class="tab-panels">
+          <div class="tab-panel is-active" id="tab-panel-media" role="tabpanel" aria-labelledby="tab-media">
+            <p data-i18n="approach.tabs.mediaCopy">Planeación, compra y optimización continua con dashboards de ROAS y atribución.</p>
+          </div>
+          <div class="tab-panel" id="tab-panel-creative" role="tabpanel" aria-labelledby="tab-creative" hidden>
+            <p data-i18n="approach.tabs.creativeCopy">Conceptos, contenido y storytelling que se adaptan al contexto cultural de NI y USA.</p>
+          </div>
+          <div class="tab-panel" id="tab-panel-tech" role="tabpanel" aria-labelledby="tab-tech" hidden>
+            <p data-i18n="approach.tabs.techCopy">Implementación de tracking, automatizaciones CRM y experimentación ágil.</p>
+          </div>
+        </div>
+        <div class="accordion" data-accordion>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="accordion-panel-1" id="accordion-1" data-i18n="approach.accordion.qa1Title">¿Cómo miden el impacto?</button>
+            <div class="accordion-panel" id="accordion-panel-1" role="region" aria-labelledby="accordion-1" hidden>
+              <p data-i18n="approach.accordion.qa1Copy">Integramos tus fuentes de datos, definimos KPIs y entregamos reportes accionables cada semana.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="accordion-panel-2" id="accordion-2" data-i18n="approach.accordion.qa2Title">¿Trabajan con equipos internos?</button>
+            <div class="accordion-panel" id="accordion-panel-2" role="region" aria-labelledby="accordion-2" hidden>
+              <p data-i18n="approach.accordion.qa2Copy">Sí, colaboramos con tu equipo para acelerar producción, transferir conocimiento y asegurar adopción.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="section" aria-labelledby="portfolio-title">
+      <div class="section-header">
+        <span class="section-kicker" data-i18n="portfolio.kicker">Portfolio</span>
+        <h2 id="portfolio-title" data-i18n="portfolio.title">Trabajos destacados</h2>
+        <p data-i18n="portfolio.description">Reemplaza los placeholders en /assets/img/ con proyectos reales, GIFs o capturas.</p>
+      </div>
+      <div class="portfolio-grid" role="list">
+        <figure class="portfolio-item" role="listitem">
+          <img src="assets/img/placeholder-image.svg" alt="" loading="lazy">
+          <figcaption data-i18n="portfolio.item1">Campaña de awareness para fintech regional.</figcaption>
+        </figure>
+        <figure class="portfolio-item" role="listitem">
+          <img src="assets/img/placeholder-image.svg" alt="" loading="lazy">
+          <figcaption data-i18n="portfolio.item2">Sitio web responsive para cadena hotelera.</figcaption>
+        </figure>
+        <figure class="portfolio-item" role="listitem">
+          <img src="assets/img/placeholder-image.svg" alt="" loading="lazy">
+          <figcaption data-i18n="portfolio.item3">Producción audiovisual para e-commerce.</figcaption>
+        </figure>
+        <figure class="portfolio-item" role="listitem">
+          <img src="assets/img/placeholder-image.svg" alt="" loading="lazy">
+          <figcaption data-i18n="portfolio.item4">Estrategia PPC para expansión en USA.</figcaption>
+        </figure>
+      </div>
+      <div class="portfolio-video">
+        <iframe src="https://player.vimeo.com/video/000000000" title="Pro-DG reel" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" aria-describedby="portfolio-video-caption"></iframe>
+        <p id="portfolio-video-caption" data-i18n="portfolio.video">Reemplaza el video con tu reel oficial desde Vimeo o YouTube.</p>
+      </div>
+    </section>
+
+    <section id="testimonios" class="section section-light" aria-labelledby="testimonials-title">
+      <div class="section-header">
+        <span class="section-kicker" data-i18n="testimonials.kicker">Confianza</span>
+        <h2 id="testimonials-title" data-i18n="testimonials.title">Lo que dicen nuestros clientes</h2>
+      </div>
+      <div class="testimonial-slider" role="region" aria-roledescription="slider" aria-labelledby="testimonials-title" aria-live="polite">
+        <div class="testimonial-track">
+          <article class="testimonial" data-index="0">
+            <p data-i18n="testimonials.item1.quote">“Pro-DG transformó nuestros canales digitales y hoy vendemos el doble en dos países.”</p>
+            <div class="testimonial-meta">
+              <span data-i18n="testimonials.item1.name">Laura G., Directora de Marketing</span>
+              <span data-i18n="testimonials.item1.company">Retail Nicaragua</span>
+            </div>
+          </article>
+          <article class="testimonial" data-index="1">
+            <p data-i18n="testimonials.item2.quote">“Equipo senior, reportes claros y foco constante en resultados medibles.”</p>
+            <div class="testimonial-meta">
+              <span data-i18n="testimonials.item2.name">Michael S., VP Growth</span>
+              <span data-i18n="testimonials.item2.company">Tech Startup USA</span>
+            </div>
+          </article>
+          <article class="testimonial" data-index="2">
+            <p data-i18n="testimonials.item3.quote">“Encontramos un aliado creativo y estratégico para lanzar campañas bilingües complejas.”</p>
+            <div class="testimonial-meta">
+              <span data-i18n="testimonials.item3.name">Ana R., CMO</span>
+              <span data-i18n="testimonials.item3.company">Educación Superior</span>
+            </div>
+          </article>
+        </div>
+        <div class="slider-controls">
+          <button type="button" class="slider-prev" aria-label="Anterior" data-i18n-aria-label="testimonials.prev">&#9664;</button>
+          <div class="slider-dots" role="tablist"></div>
+          <button type="button" class="slider-next" aria-label="Siguiente" data-i18n-aria-label="testimonials.next">&#9654;</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="precios" class="section" aria-labelledby="pricing-title">
+      <div class="section-header">
+        <span class="section-kicker" data-i18n="pricing.kicker">Paquetes</span>
+        <h2 id="pricing-title" data-i18n="pricing.title">Planes base flexibles</h2>
+      </div>
+      <div class="grid pricing-grid">
+        <article class="card pricing-card" aria-label="Starter">
+          <h3 data-i18n="pricing.starter.title">Starter</h3>
+          <p class="pricing-price" data-i18n="pricing.starter.price">Desde $950/mes</p>
+          <ul>
+            <li data-i18n="pricing.starter.item1">Campañas Meta Ads</li>
+            <li data-i18n="pricing.starter.item2">Creatividades estáticas</li>
+            <li data-i18n="pricing.starter.item3">Reportes quincenales</li>
+          </ul>
+          <a class="btn btn-outline" href="#contacto" data-i18n="pricing.cta">Solicitar propuesta</a>
+        </article>
+        <article class="card pricing-card highlighted" aria-label="Growth">
+          <div class="badge" data-i18n="pricing.badge">Popular</div>
+          <h3 data-i18n="pricing.growth.title">Growth</h3>
+          <p class="pricing-price" data-i18n="pricing.growth.price">Desde $1,800/mes</p>
+          <ul>
+            <li data-i18n="pricing.growth.item1">Paid Social + Search</li>
+            <li data-i18n="pricing.growth.item2">Landing pages optimizadas</li>
+            <li data-i18n="pricing.growth.item3">Reporting en vivo</li>
+          </ul>
+          <a class="btn btn-primary" href="#contacto" data-i18n="pricing.cta">Solicitar propuesta</a>
+        </article>
+        <article class="card pricing-card" aria-label="Scale">
+          <h3 data-i18n="pricing.scale.title">Scale</h3>
+          <p class="pricing-price" data-i18n="pricing.scale.price">Desde $3,500/mes</p>
+          <ul>
+            <li data-i18n="pricing.scale.item1">Media buying multicanal</li>
+            <li data-i18n="pricing.scale.item2">Producción audiovisual premium</li>
+            <li data-i18n="pricing.scale.item3">Equipo dedicado &amp; BI</li>
+          </ul>
+          <a class="btn btn-outline" href="#contacto" data-i18n="pricing.cta">Solicitar propuesta</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="nosotros" class="section section-light" aria-labelledby="about-title">
+      <div class="section-header">
+        <span class="section-kicker" data-i18n="about.kicker">Sobre Pro-DG</span>
+        <h2 id="about-title" data-i18n="about.title">Equipo bilingüe con presencia en Nicaragua y Estados Unidos</h2>
+      </div>
+      <div class="about-grid">
+        <article>
+          <h3 data-i18n="about.mission.title">Nuestra misión</h3>
+          <p data-i18n="about.mission.copy">Impulsar negocios con estrategias creativas, medibles y éticas.</p>
+        </article>
+        <article>
+          <h3 data-i18n="about.vision.title">Nuestra visión</h3>
+          <p data-i18n="about.vision.copy">Ser la agencia latinoamericana referencia en performance bilingüe.</p>
+        </article>
+        <article>
+          <h3 data-i18n="about.team.title">Equipo senior</h3>
+          <p data-i18n="about.team.copy">Media buyers certificados, estrategas de contenido, desarrolladores y analistas.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contacto" class="section" aria-labelledby="contact-title">
+      <div class="section-header">
+        <span class="section-kicker" data-i18n="contact.kicker">Contacto</span>
+        <h2 id="contact-title" data-i18n="contact.title">Hablemos de tu próximo objetivo</h2>
+        <p data-i18n="contact.description">Completa el formulario y agenda una reunión bilingüe con nuestro equipo.</p>
+      </div>
+      <div class="contact-grid">
+        <form id="contact-form" class="card form-card" data-endpoint="https://api.example.com/contact" novalidate>
+          <div class="form-status" role="status" aria-live="polite"></div>
+          <div class="form-group">
+            <label for="name" data-i18n="contact.form.nameLabel">Nombre</label>
+            <input type="text" id="name" name="name" autocomplete="name" required placeholder="Andrea López" data-i18n-placeholder="contact.form.namePlaceholder">
+          </div>
+          <div class="form-group">
+            <label for="email" data-i18n="contact.form.emailLabel">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required placeholder="hola@empresa.com" data-i18n-placeholder="contact.form.emailPlaceholder">
+          </div>
+          <div class="form-group">
+            <label for="phone" data-i18n="contact.form.phoneLabel">Teléfono</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+505 8888-0000" data-i18n-placeholder="contact.form.phonePlaceholder">
+          </div>
+          <div class="form-group">
+            <label for="company" data-i18n="contact.form.companyLabel">Empresa</label>
+            <input type="text" id="company" name="company" placeholder="Nombre de la empresa" data-i18n-placeholder="contact.form.companyPlaceholder">
+          </div>
+          <div class="form-group">
+            <label for="service" data-i18n="contact.form.serviceLabel">Servicio de interés</label>
+            <select id="service" name="service">
+              <option value="" data-i18n="contact.form.serviceOption">Selecciona una opción</option>
+              <option value="media" data-i18n="contact.form.serviceMedia">Media Buying</option>
+              <option value="creative" data-i18n="contact.form.serviceCreative">Creatividad &amp; producción</option>
+              <option value="web" data-i18n="contact.form.serviceWeb">Sitios web y funnels</option>
+              <option value="consulting" data-i18n="contact.form.serviceConsulting">Consultoría</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message" data-i18n="contact.form.messageLabel">Mensaje</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Cuéntanos sobre tu proyecto." data-i18n-placeholder="contact.form.messagePlaceholder"></textarea>
+          </div>
+          <div class="form-group checkbox">
+            <input type="checkbox" id="privacy" name="privacy" required>
+            <label for="privacy" data-i18n="contact.form.privacy">Acepto la política de privacidad.</label>
+          </div>
+          <button type="submit" class="btn btn-primary" data-i18n="contact.form.submit">Enviar</button>
+        </form>
+        <aside class="card contact-aside">
+          <h3 data-i18n="contact.aside.title">Respuestas en menos de 24 horas</h3>
+          <p data-i18n="contact.aside.copy">También puedes escribirnos por los siguientes canales:</p>
+          <ul class="contact-actions">
+            <li><a class="btn btn-outline" href="https://wa.me/50500000000" target="_blank" rel="noopener" data-i18n="contact.aside.whatsapp">WhatsApp</a></li>
+            <li><a class="btn btn-outline" href="tel:+50500000000" data-i18n="contact.aside.call">Llamar</a></li>
+            <li><a class="btn btn-outline" href="mailto:hola@pro-dg.example" data-i18n="contact.aside.email">Email</a></li>
+          </ul>
+          <div class="contact-info">
+            <h4 data-i18n="contact.info.niTitle">Oficina Nicaragua</h4>
+            <p data-i18n="contact.info.niAddress">Managua, Nicaragua · +505 0000 0000</p>
+            <h4 data-i18n="contact.info.usTitle">Oficina USA</h4>
+            <p data-i18n="contact.info.usAddress">Miami, FL · +1 (305) 000-0000</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" aria-labelledby="footer-title">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/img/pro-dg-logo.svg" alt="Pro-DG" loading="lazy">
+        <p data-i18n="footer.tagline">Marketing digital, creatividad y media buying sin fronteras.</p>
+      </div>
+      <div class="footer-links" role="navigation" aria-label="Enlaces rápidos">
+        <h3 id="footer-title" data-i18n="footer.links">Links rápidos</h3>
+        <ul>
+          <li><a href="#servicios" data-i18n="nav.services">Servicios</a></li>
+          <li><a href="#casos" data-i18n="nav.results">Casos</a></li>
+          <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+          <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-social" aria-label="Redes sociales">
+        <h3 data-i18n="footer.social">Síguenos</h3>
+        <ul>
+          <li><a href="https://facebook.com" rel="noopener" target="_blank">Facebook</a></li>
+          <li><a href="https://instagram.com" rel="noopener" target="_blank">Instagram</a></li>
+          <li><a href="https://linkedin.com" rel="noopener" target="_blank">LinkedIn</a></li>
+          <li><a href="https://youtube.com" rel="noopener" target="_blank">YouTube</a></li>
+        </ul>
+      </div>
+      <div class="footer-meta">
+        <p data-i18n="footer.copy">© <span id="current-year"></span> Pro-DG. Todos los derechos reservados.</p>
+        <a href="https://www.pro-dg.example" data-i18n="footer.credit">Site by Pro-DG</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-actions" aria-label="Acciones rápidas">
+    <a class="floating-button" href="https://wa.me/50500000000" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+    <a class="floating-button" href="tel:+15050000000" aria-label="Call">📞</a>
+    <a class="floating-button" href="mailto:hola@pro-dg.example" aria-label="Email">✉️</a>
+  </div>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} // Google Analytics placeholder
+  </script>
+  <script type="application/ld+json" id="schema-organization">
+    {
+      "@context": "https://schema.org",
+      "@type": ["Organization", "LocalBusiness"],
+      "name": "Pro-DG",
+      "url": "https://www.pro-dg.example/",
+      "logo": "https://www.pro-dg.example/assets/img/pro-dg-logo.svg",
+      "description": "Agencia de marketing digital y media buying en Nicaragua y Estados Unidos.",
+      "email": "hola@pro-dg.example",
+      "telephone": "+1-305-000-0000",
+      "address": [{
+        "@type": "PostalAddress",
+        "streetAddress": "Managua",
+        "addressLocality": "Managua",
+        "addressCountry": "NI"
+      }, {
+        "@type": "PostalAddress",
+        "streetAddress": "Miami",
+        "addressLocality": "Miami",
+        "addressRegion": "FL",
+        "addressCountry": "US"
+      }],
+      "sameAs": [
+        "https://www.facebook.com/prodg",
+        "https://www.instagram.com/prodg",
+        "https://www.linkedin.com/company/prodg",
+        "https://www.youtube.com/prodg"
+      ]
+    }
+  </script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

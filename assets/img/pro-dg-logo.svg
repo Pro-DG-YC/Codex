@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" role="img" aria-labelledby="title desc">
+  <title id="title">Pro-DG Placeholder Logo</title>
+  <desc id="desc">Placeholder logo for Pro-DG digital agency</desc>
+  <rect width="240" height="60" rx="12" fill="#0b1324" />
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#c7a258" font-family="Montserrat, Arial" font-size="28" font-weight="600">Pro-DG</text>
+</svg>

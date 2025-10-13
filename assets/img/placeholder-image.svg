@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Pro-DG image placeholder</title>
+  <desc id="desc">Placeholder graphic indicating where project imagery should be inserted for the Pro-DG website.</desc>
+  <defs>
+    <linearGradient id="placeholderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111b33" />
+      <stop offset="50%" stop-color="#0b1324" />
+      <stop offset="100%" stop-color="#070f1f" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" rx="32" fill="url(#placeholderGradient)" />
+  <g fill="none" stroke="#c7a258" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.65">
+    <path d="M128 432 L272 288 L352 368 L496 208 L672 432" />
+    <circle cx="244" cy="212" r="44" />
+  </g>
+  <text x="50%" y="92%" text-anchor="middle" font-family="'Montserrat', 'Arial', sans-serif" font-size="32" fill="#c7a258" opacity="0.8">Reemplazar imagen</text>
+</svg>

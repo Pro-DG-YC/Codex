@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">Hero background placeholder</title>
+  <desc id="desc">Abstract gradient placeholder artwork for the Pro-DG hero background. Replace with branded photography or illustration.</desc>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1324" />
+      <stop offset="60%" stop-color="#070f1f" />
+      <stop offset="100%" stop-color="#13223e" />
+    </linearGradient>
+    <radialGradient id="highlight" cx="85%" cy="15%" r="65%">
+      <stop offset="0%" stop-color="#c7a258" stop-opacity="0.6" />
+      <stop offset="45%" stop-color="#c7a258" stop-opacity="0" />
+      <stop offset="100%" stop-color="#0b1324" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect fill="url(#grad)" width="1440" height="900" />
+  <circle cx="1150" cy="180" r="420" fill="url(#highlight)" />
+  <circle cx="280" cy="720" r="300" fill="#13223e" opacity="0.35" />
+  <path d="M0 620 Q240 540 460 640 T960 640 T1440 520 V900 H0 Z" fill="#0f1c33" opacity="0.45" />
+  <path d="M0 680 Q260 580 520 700 T1020 700 T1440 620 V900 H0 Z" fill="#10203a" opacity="0.5" />
+</svg>
