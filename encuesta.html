@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="es-NI">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Encuesta de hábitos digitales en Nicaragua</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f7f9fb;
+      --surface: #ffffff;
+      --primary: #2b7de9;
+      --primary-dark: #1a5eb8;
+      --accent: #23a974;
+      --text: #1f2933;
+      --text-muted: #52606d;
+      --border: #d9e2ec;
+      --error: #d64545;
+      font-size: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.8rem, 2.6vw + 1rem, 2.8rem);
+    }
+
+    header p {
+      margin: 0 auto;
+      max-width: 42rem;
+    }
+
+    main {
+      max-width: 960px;
+      margin: -3rem auto 2rem;
+      padding: 0 1.25rem 4rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: 1.25rem;
+      box-shadow: 0 18px 40px -24px rgba(26, 46, 85, 0.4);
+      padding: clamp(1.25rem, 2vw + 1rem, 2.5rem);
+      border: 1px solid rgba(43, 125, 233, 0.08);
+    }
+
+    .progress-wrapper {
+      margin-bottom: 2rem;
+    }
+
+    .progress-bar {
+      width: 100%;
+      background: var(--border);
+      border-radius: 999px;
+      height: 0.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-bar span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: inherit;
+      transition: width 0.4s ease;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    form {
+      display: grid;
+      gap: 2rem;
+    }
+
+    fieldset {
+      border: none;
+      padding: 0;
+      margin: 0;
+      display: none;
+    }
+
+    fieldset.active {
+      display: block;
+    }
+
+    legend {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary-dark);
+    }
+
+    .helper-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: inline-block;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="tel"],
+    select,
+    textarea,
+    .combobox input {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      border-radius: 0.75rem;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      font: inherit;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus,
+    .combobox input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(43, 125, 233, 0.25);
+    }
+
+    .combobox {
+      position: relative;
+    }
+
+    .combobox button.toggle {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--primary-dark);
+    }
+
+    .combobox .options {
+      position: absolute;
+      z-index: 5;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      margin-top: 0.25rem;
+      max-height: 220px;
+      overflow-y: auto;
+      width: 100%;
+      box-shadow: 0 12px 32px -18px rgba(31, 41, 51, 0.45);
+      display: none;
+    }
+
+    .combobox .options[aria-hidden="false"] {
+      display: block;
+    }
+
+    .combobox .options button {
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: 0.75rem;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .combobox .options button[aria-selected="true"],
+    .combobox .options button:hover,
+    .combobox .options button:focus {
+      background: rgba(43, 125, 233, 0.12);
+      outline: none;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .checkbox-group,
+    .radio-group {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .checkbox-group label,
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      width: 1.1rem;
+      height: 1.1rem;
+      accent-color: var(--primary);
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .actions button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.85rem 1.6rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      min-width: 140px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .actions button.primary {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: #fff;
+      box-shadow: 0 12px 24px -16px rgba(35, 169, 116, 0.8);
+    }
+
+    .actions button.secondary {
+      background: #e4ebf3;
+      color: var(--primary-dark);
+    }
+
+    .actions button:focus-visible {
+      outline: 3px solid rgba(35, 169, 116, 0.6);
+      outline-offset: 2px;
+    }
+
+    .actions button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .error-message {
+      color: var(--error);
+      font-size: 0.95rem;
+      margin-top: 0.35rem;
+    }
+
+    .note {
+      background: rgba(43, 125, 233, 0.08);
+      border-left: 4px solid var(--primary);
+      padding: 0.85rem 1rem;
+      border-radius: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+
+    .summary-table th,
+    .summary-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .summary-table th {
+      background: rgba(43, 125, 233, 0.08);
+      width: 30%;
+    }
+
+    dialog {
+      border: none;
+      border-radius: 1rem;
+      padding: 2rem;
+      max-width: 480px;
+      width: calc(100% - 2rem);
+      box-shadow: 0 24px 48px -28px rgba(17, 24, 39, 0.7);
+    }
+
+    dialog::backdrop {
+      background: rgba(17, 24, 39, 0.45);
+    }
+
+    .success-state {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .success-state h2 {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(35, 169, 116, 0.12);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding-bottom: 1.5rem;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .actions button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Encuesta de hábitos digitales en Nicaragua</h1>
+    <p>
+      Gracias por apoyar este estudio. Tus respuestas nos ayudan a comprender cómo las familias en Nicaragua se conectan,
+      se informan y realizan compras digitales. Puedes pausar y reanudar cuando quieras.
+    </p>
+  </header>
+  <main>
+    <section class="card" aria-live="polite">
+      <div class="progress-wrapper" aria-hidden="false">
+        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <span></span>
+        </div>
+        <div class="progress-label" id="progress-label">
+          <span>Paso 1 de 10</span>
+          <span>0% completado</span>
+        </div>
+      </div>
+      <form id="encuesta" novalidate>
+        <!-- A) Consentimiento -->
+        <fieldset data-step="consentimiento" class="active">
+          <legend>Consentimiento informado y privacidad</legend>
+          <div class="helper-text">
+            <p>
+              Objetivo: conocer los hábitos digitales y de consumo en los hogares de Nicaragua. Tus respuestas se analizarán de forma agregada y con fines estadísticos. No se compartirán con terceros.
+            </p>
+            <p>
+              <strong>Importante:</strong> Para participar por la rifa y coordinar la entrega del premio en domicilio, <strong>Nombre, Edad (18+), Dirección completa, Email y Teléfono son obligatorios</strong>. El resto de preguntas puedes saltarlas si no te sientes cómodo/a.
+            </p>
+          </div>
+          <div class="checkbox-group" role="group" aria-labelledby="consentimiento-label">
+            <label id="consentimiento-label">
+              <input type="checkbox" id="aceptaPrivacidad" name="aceptaPrivacidad" required />
+              Acepto el aviso de privacidad y el uso de mis respuestas con fines estadísticos.
+            </label>
+            <p class="error-message hidden" data-error-for="aceptaPrivacidad">Debes aceptar para continuar.</p>
+          </div>
+        </fieldset>
+
+        <!-- B) Datos personales -->
+        <fieldset data-step="personales">
+          <legend>Datos personales para la rifa</legend>
+          <p class="note" role="note">Estos datos solo se usarán para contactarte y entregar el premio. No se compartirán con terceros.</p>
+          <div class="grid">
+            <label for="nombre">Nombre completo *</label>
+            <input type="text" id="nombre" name="nombre" autocomplete="name" required aria-required="true" />
+            <p class="error-message hidden" data-error-for="nombre">Ingresa tu nombre completo.</p>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="edad">Edad *</label>
+              <input type="number" id="edad" name="edad" min="18" max="110" required aria-required="true" />
+              <p class="error-message hidden" data-error-for="edad">Debes tener 18 años o más para participar.</p>
+            </div>
+            <div>
+              <label for="telefono">Teléfono *</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+505 88888888" required aria-required="true" inputmode="tel" pattern="^(\+?505)?\s?\d{8}$" />
+              <p class="error-message hidden" data-error-for="telefono">Ingresa un teléfono válido de Nicaragua (ej. +505 88888888).</p>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="departamento">Departamento *</label>
+              <div class="combobox" data-field="departamento">
+                <input type="text" id="departamento" name="departamento" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-owns="lista-departamentos" autocomplete="off" required />
+                <button type="button" class="toggle" aria-label="Mostrar departamentos">▾</button>
+                <div class="options" id="lista-departamentos" role="listbox" aria-hidden="true"></div>
+              </div>
+              <p class="error-message hidden" data-error-for="departamento">Selecciona un departamento.</p>
+            </div>
+            <div>
+              <label for="municipio">Municipio *</label>
+              <div class="combobox" data-field="municipio">
+                <input type="text" id="municipio" name="municipio" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-owns="lista-municipios" autocomplete="off" required />
+                <button type="button" class="toggle" aria-label="Mostrar municipios">▾</button>
+                <div class="options" id="lista-municipios" role="listbox" aria-hidden="true"></div>
+              </div>
+              <p class="error-message hidden" data-error-for="municipio">Selecciona un municipio.</p>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="barrio">Barrio o colonia *</label>
+              <input type="text" id="barrio" name="barrio" required aria-required="true" />
+              <p class="error-message hidden" data-error-for="barrio">Ingresa tu barrio o colonia.</p>
+            </div>
+            <div>
+              <label for="calle">Calle o avenida *</label>
+              <input type="text" id="calle" name="calle" required aria-required="true" />
+              <p class="error-message hidden" data-error-for="calle">Ingresa la calle o avenida.</p>
+            </div>
+          </div>
+          <div class="grid">
+            <div>
+              <label for="referencia">Casa / referencia *</label>
+              <input type="text" id="referencia" name="referencia" required aria-required="true" />
+              <p class="error-message hidden" data-error-for="referencia">Agrega una referencia para ubicar tu domicilio.</p>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="email">Correo electrónico *</label>
+              <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" />
+              <p class="error-message hidden" data-error-for="email">Ingresa un correo válido.</p>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- C) Hogar y familia -->
+        <fieldset data-step="hogar">
+          <legend>Hogar y familia</legend>
+          <div class="grid two">
+            <div>
+              <label for="tienesHijos">¿Tienes hijos?</label>
+              <select id="tienesHijos" name="tienesHijos">
+                <option value="">Prefiero no responder</option>
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div>
+              <label for="cantidadHijos">¿Cuántos hijos?</label>
+              <input type="number" id="cantidadHijos" name="cantidadHijos" min="0" max="10" />
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="personasHogar">¿Cuántas personas viven en tu hogar?</label>
+              <input type="number" id="personasHogar" name="personasHogar" min="1" max="15" />
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- D) Acceso y uso de internet -->
+        <fieldset data-step="internet">
+          <legend>Acceso y uso de Internet</legend>
+          <div class="grid two">
+            <div>
+              <label for="internetCasa">¿Tienes internet en casa?</label>
+              <select id="internetCasa" name="internetCasa">
+                <option value="">Prefiero no responder</option>
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div>
+              <label for="proveedorInternet">Proveedor principal</label>
+              <select id="proveedorInternet" name="proveedorInternet">
+                <option value="">Prefiero no responder</option>
+                <option value="Claro">Claro</option>
+                <option value="Tigo">Tigo</option>
+                <option value="Cootel">Cootel</option>
+                <option value="Yota">Yota</option>
+                <option value="IBW">IBW</option>
+                <option value="Otro">Otro (especificar)</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="otroProveedor">Si seleccionaste Otro, indícalo</label>
+              <input type="text" id="otroProveedor" name="otroProveedor" />
+            </div>
+            <div>
+              <label for="tipoConexion">Tipo de conexión</label>
+              <select id="tipoConexion" name="tipoConexion">
+                <option value="">Prefiero no responder</option>
+                <option value="Fibra">Fibra</option>
+                <option value="Cable">Cable</option>
+                <option value="Movil">Móvil / Hotspot</option>
+                <option value="Satelital">Satelital</option>
+                <option value="No se">No sé</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="velocidadPercibida">Velocidad percibida</label>
+              <select id="velocidadPercibida" name="velocidadPercibida">
+                <option value="">Prefiero no responder</option>
+                <option value="Muy lenta">Muy lenta</option>
+                <option value="Lenta">Lenta</option>
+                <option value="Regular">Regular</option>
+                <option value="Rapida">Rápida</option>
+                <option value="Muy rapida">Muy rápida</option>
+              </select>
+            </div>
+            <div>
+              <label for="estabilidadPercibida">Estabilidad percibida</label>
+              <select id="estabilidadPercibida" name="estabilidadPercibida">
+                <option value="">Prefiero no responder</option>
+                <option value="Muy inestable">Muy inestable</option>
+                <option value="Inestable">Inestable</option>
+                <option value="Regular">Regular</option>
+                <option value="Estable">Estable</option>
+                <option value="Muy estable">Muy estable</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="gastoMensual">Gasto mensual estimado (USD)</label>
+              <select id="gastoMensual" name="gastoMensual">
+                <option value="">Prefiero no responder</option>
+                <option value="Menos de 15">Menos de 15 USD</option>
+                <option value="15-25">15 - 25 USD</option>
+                <option value="26-40">26 - 40 USD</option>
+                <option value="41-60">41 - 60 USD</option>
+                <option value="Mas de 60">Más de 60 USD</option>
+              </select>
+            </div>
+            <div>
+              <label for="usoDiario">Uso diario aproximado (horas)</label>
+              <input type="number" id="usoDiario" name="usoDiario" min="0" max="24" />
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- E) Dispositivos y telefonía -->
+        <fieldset data-step="dispositivos">
+          <legend>Dispositivos y telefonía</legend>
+          <div class="grid two">
+            <div>
+              <label for="tienesSmartphone">¿Tienes smartphone?</label>
+              <select id="tienesSmartphone" name="tienesSmartphone">
+                <option value="">Prefiero no responder</option>
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div>
+              <label for="marcaSmartphone">Marca</label>
+              <select id="marcaSmartphone" name="marcaSmartphone">
+                <option value="">Prefiero no responder</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Apple">Apple</option>
+                <option value="Xiaomi">Xiaomi</option>
+                <option value="Huawei">Huawei</option>
+                <option value="Motorola">Motorola</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="soSmartphone">Sistema operativo</label>
+              <select id="soSmartphone" name="soSmartphone">
+                <option value="">Prefiero no responder</option>
+                <option value="Android">Android</option>
+                <option value="iOS">iOS</option>
+                <option value="No se">No sé</option>
+              </select>
+            </div>
+            <div>
+              <label for="antiguedadSmartphone">Antigüedad</label>
+              <select id="antiguedadSmartphone" name="antiguedadSmartphone">
+                <option value="">Prefiero no responder</option>
+                <option value="Menos de 1 año">Menos de 1 año</option>
+                <option value="1-2 años">1 - 2 años</option>
+                <option value="3-4 años">3 - 4 años</option>
+                <option value="5 o más">5 años o más</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="precioSmartphone">Rango de precio (USD)</label>
+              <select id="precioSmartphone" name="precioSmartphone">
+                <option value="">Prefiero no responder</option>
+                <option value="Menos de 150">Menos de 150</option>
+                <option value="150-299">150 - 299</option>
+                <option value="300-499">300 - 499</option>
+                <option value="500-699">500 - 699</option>
+                <option value="700 o más">700 o más</option>
+              </select>
+            </div>
+            <div>
+              <label for="tipoPlan">Tipo de plan</label>
+              <select id="tipoPlan" name="tipoPlan">
+                <option value="">Prefiero no responder</option>
+                <option value="Prepago">Prepago</option>
+                <option value="Pospago">Pospago</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="operadorMovil">Operador móvil</label>
+              <select id="operadorMovil" name="operadorMovil">
+                <option value="">Prefiero no responder</option>
+                <option value="Claro">Claro</option>
+                <option value="Tigo">Tigo</option>
+                <option value="Cootel">Cootel</option>
+                <option value="Movistar">Movistar</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+            <div>
+              <label for="comparteDatos">¿Compartes datos con otros dispositivos?</label>
+              <select id="comparteDatos" name="comparteDatos">
+                <option value="">Prefiero no responder</option>
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- F) Medios y redes -->
+        <fieldset data-step="medios">
+          <legend>Medios y redes</legend>
+          <div>
+            <label>Plataformas que usas (puedes elegir varias)</label>
+            <div class="checkbox-group" id="plataformas">
+              <label><input type="checkbox" value="WhatsApp" /> WhatsApp</label>
+              <label><input type="checkbox" value="Facebook" /> Facebook</label>
+              <label><input type="checkbox" value="Instagram" /> Instagram</label>
+              <label><input type="checkbox" value="TikTok" /> TikTok</label>
+              <label><input type="checkbox" value="YouTube" /> YouTube</label>
+              <label><input type="checkbox" value="X/Twitter" /> X/Twitter</label>
+              <label><input type="checkbox" value="Telegram" /> Telegram</label>
+              <label><input type="checkbox" value="Snapchat" /> Snapchat</label>
+              <label><input type="checkbox" value="Twitch" /> Twitch</label>
+              <label><input type="checkbox" value="Podcasts" /> Podcasts</label>
+              <label><input type="checkbox" value="TV abierta" /> TV abierta</label>
+              <label><input type="checkbox" value="TV por cable" /> TV por cable</label>
+              <label><input type="checkbox" value="Radio" /> Radio</label>
+              <label><input type="checkbox" value="Prensa digital" /> Prensa digital</label>
+              <label><input type="checkbox" value="Otro" /> Otro</label>
+              <label><input type="checkbox" value="Prefiero no responder" /> Prefiero no responder</label>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="tiempoPlataformas">Tiempo diario aproximado en plataformas (horas)</label>
+              <input type="number" id="tiempoPlataformas" name="tiempoPlataformas" min="0" max="24" />
+            </div>
+            <div>
+              <label for="propositoPlataformas">Propósito principal</label>
+              <select id="propositoPlataformas" name="propositoPlataformas">
+                <option value="">Prefiero no responder</option>
+                <option value="Informacion">Información</option>
+                <option value="Entretenimiento">Entretenimiento</option>
+                <option value="Trabajo/Estudios">Trabajo / Estudios</option>
+                <option value="Compras">Compras</option>
+                <option value="Comunicacion">Comunicación</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- G) Compras y finanzas -->
+        <fieldset data-step="compras">
+          <legend>Hábitos de compra y finanzas cotidianas</legend>
+          <div>
+            <label>Categorías que compras con mayor frecuencia</label>
+            <div class="checkbox-group" id="categoriasCompra">
+              <label><input type="checkbox" value="Alimentos" /> Alimentos</label>
+              <label><input type="checkbox" value="Ropa/Calzado" /> Ropa/Calzado</label>
+              <label><input type="checkbox" value="Tecnologia" /> Tecnología</label>
+              <label><input type="checkbox" value="Hogar" /> Hogar</label>
+              <label><input type="checkbox" value="Belleza" /> Belleza</label>
+              <label><input type="checkbox" value="Farmacia" /> Farmacia</label>
+              <label><input type="checkbox" value="Entretenimiento" /> Entretenimiento</label>
+              <label><input type="checkbox" value="Transporte" /> Transporte</label>
+              <label><input type="checkbox" value="Recargas" /> Recargas</label>
+              <label><input type="checkbox" value="Restaurantes" /> Restaurantes</label>
+              <label><input type="checkbox" value="Turismo" /> Turismo</label>
+              <label><input type="checkbox" value="Otro" /> Otro</label>
+              <label><input type="checkbox" value="Prefiero no responder" /> Prefiero no responder</label>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="frecuenciaCompra">Frecuencia más común</label>
+              <select id="frecuenciaCompra" name="frecuenciaCompra">
+                <option value="">Prefiero no responder</option>
+                <option value="Semanal">Semanal</option>
+                <option value="Mensual">Mensual</option>
+                <option value="Ocasional">Ocasional</option>
+              </select>
+            </div>
+            <div>
+              <label for="canalesCompra">Canales que utilizas</label>
+              <select id="canalesCompra" name="canalesCompra" multiple size="5" aria-describedby="canales-helper">
+                <option value="Tiendas fisicas">Tiendas físicas</option>
+                <option value="Marketplaces">Marketplaces</option>
+                <option value="Redes sociales">Redes sociales</option>
+                <option value="Apps delivery">Apps delivery</option>
+                <option value="Web de marcas">Web de marcas</option>
+                <option value="Prefiero no responder">Prefiero no responder</option>
+              </select>
+              <small id="canales-helper" class="helper-text">Mantén presionado Ctrl/Cmd para seleccionar varias opciones.</small>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="metodosPago">Métodos de pago preferidos</label>
+              <select id="metodosPago" name="metodosPago" multiple size="5" aria-describedby="metodos-helper">
+                <option value="Efectivo">Efectivo</option>
+                <option value="Tarjeta">Tarjeta</option>
+                <option value="Transferencia">Transferencia</option>
+                <option value="Billetera movil">Billetera móvil</option>
+                <option value="Contra entrega">Contra entrega</option>
+                <option value="Prefiero no responder">Prefiero no responder</option>
+              </select>
+              <small id="metodos-helper" class="helper-text">Mantén presionado Ctrl/Cmd para seleccionar varias opciones.</small>
+            </div>
+            <div>
+              <label for="factoresDecision">Factores de decisión</label>
+              <select id="factoresDecision" name="factoresDecision" multiple size="6" aria-describedby="factores-helper">
+                <option value="Precio">Precio</option>
+                <option value="Calidad">Calidad</option>
+                <option value="Promociones">Promociones</option>
+                <option value="Recomendaciones">Recomendaciones</option>
+                <option value="Marca">Marca</option>
+                <option value="Envio">Envío</option>
+                <option value="Devoluciones">Devoluciones</option>
+                <option value="Prefiero no responder">Prefiero no responder</option>
+              </select>
+              <small id="factores-helper" class="helper-text">Mantén presionado Ctrl/Cmd para seleccionar varias opciones.</small>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- H) Servicios y estilo de vida -->
+        <fieldset data-step="servicios">
+          <legend>Servicios, estilo de vida y publicidad</legend>
+          <div class="grid two">
+            <div>
+              <label for="suscripciones">Suscripciones activas</label>
+              <select id="suscripciones" name="suscripciones" multiple size="5" aria-describedby="suscripciones-helper">
+                <option value="Streaming video">Streaming de video</option>
+                <option value="Musica">Música</option>
+                <option value="Almacenamiento">Almacenamiento en la nube</option>
+                <option value="Fitness">Fitness</option>
+                <option value="Otro">Otro</option>
+                <option value="Prefiero no responder">Prefiero no responder</option>
+              </select>
+              <small id="suscripciones-helper" class="helper-text">Mantén presionado Ctrl/Cmd para seleccionar varias opciones.</small>
+            </div>
+            <div>
+              <label for="transporte">Transporte que usas con mayor frecuencia</label>
+              <select id="transporte" name="transporte">
+                <option value="">Prefiero no responder</option>
+                <option value="A pie">A pie</option>
+                <option value="Bus">Bus</option>
+                <option value="Taxi">Taxi</option>
+                <option value="Ride-hailing">Ride-hailing</option>
+                <option value="Moto">Moto</option>
+                <option value="Auto propio">Auto propio</option>
+                <option value="Bicicleta">Bicicleta</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="tiempoLibre">¿Cómo usas tu tiempo libre?</label>
+              <select id="tiempoLibre" name="tiempoLibre" multiple size="6" aria-describedby="tiempo-helper">
+                <option value="Leer">Leer</option>
+                <option value="Series">Ver series/películas</option>
+                <option value="Deportes">Hacer deportes</option>
+                <option value="Videojuegos">Videojuegos</option>
+                <option value="Redes sociales">Redes sociales</option>
+                <option value="Voluntariado">Voluntariado</option>
+                <option value="Otro">Otro</option>
+                <option value="Prefiero no responder">Prefiero no responder</option>
+              </select>
+              <small id="tiempo-helper" class="helper-text">Mantén presionado Ctrl/Cmd para seleccionar varias opciones.</small>
+            </div>
+            <div>
+              <label for="comerFuera">¿Con qué frecuencia comes fuera de casa?</label>
+              <select id="comerFuera" name="comerFuera">
+                <option value="">Prefiero no responder</option>
+                <option value="Casi nunca">Casi nunca</option>
+                <option value="1-2 veces al mes">1-2 veces al mes</option>
+                <option value="1 vez por semana">1 vez por semana</option>
+                <option value="Varias veces por semana">Varias veces por semana</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="viajesNicaragua">Viajes dentro de Nicaragua</label>
+              <select id="viajesNicaragua" name="viajesNicaragua">
+                <option value="">Prefiero no responder</option>
+                <option value="Casi nunca">Casi nunca</option>
+                <option value="1-2 veces al año">1-2 veces al año</option>
+                <option value="Trimestral">Trimestral</option>
+                <option value="Mensual">Mensual</option>
+              </select>
+            </div>
+            <div>
+              <label for="motivoViajes">Motivo principal de los viajes</label>
+              <select id="motivoViajes" name="motivoViajes">
+                <option value="">Prefiero no responder</option>
+                <option value="Trabajo">Trabajo</option>
+                <option value="Familia">Visitar familia/amigos</option>
+                <option value="Turismo">Turismo</option>
+                <option value="Estudios">Estudios</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="publicidadRecordada">Publicidad recordada en la última semana</label>
+              <select id="publicidadRecordada" name="publicidadRecordada" multiple size="6" aria-describedby="publicidad-helper">
+                <option value="Redes">Redes sociales</option>
+                <option value="YouTube">YouTube</option>
+                <option value="TV">TV</option>
+                <option value="Radio">Radio</option>
+                <option value="Vallas">Vallas publicitarias</option>
+                <option value="Email">Email</option>
+                <option value="SMS">SMS</option>
+                <option value="Otro">Otro</option>
+                <option value="Prefiero no responder">Prefiero no responder</option>
+              </select>
+              <small id="publicidad-helper" class="helper-text">Mantén presionado Ctrl/Cmd para seleccionar varias opciones.</small>
+            </div>
+            <div>
+              <label for="motivaMarca">¿Qué te motiva a probar una marca?</label>
+              <select id="motivaMarca" name="motivaMarca" multiple size="6" aria-describedby="motiva-helper">
+                <option value="Promociones">Promociones</option>
+                <option value="Amigos/Creadores">Amigos o creadores</option>
+                <option value="Resenas">Reseñas</option>
+                <option value="Sostenibilidad">Sostenibilidad</option>
+                <option value="Calidad">Calidad</option>
+                <option value="Prefiero no responder">Prefiero no responder</option>
+              </select>
+              <small id="motiva-helper" class="helper-text">Mantén presionado Ctrl/Cmd para seleccionar varias opciones.</small>
+            </div>
+          </div>
+          <div class="grid">
+            <label for="marcasLocales">Marcas locales que te gustan (opcional)</label>
+            <textarea id="marcasLocales" name="marcasLocales" rows="3" placeholder="Puedes dejar en blanco o escribir 'Prefiero no responder'."></textarea>
+          </div>
+          <div class="grid two">
+            <div>
+              <label for="satisfaccionInternet">Satisfacción con tu servicio de internet (1 muy insatisfecho - 5 muy satisfecho)</label>
+              <input type="number" id="satisfaccionInternet" name="satisfaccionInternet" min="1" max="5" />
+            </div>
+            <div>
+              <label for="satisfaccionTelefonia">Satisfacción con tu telefonía móvil (1-5)</label>
+              <input type="number" id="satisfaccionTelefonia" name="satisfaccionTelefonia" min="1" max="5" />
+            </div>
+          </div>
+          <div class="grid">
+            <label for="mejorasCiudad">¿Qué mejorarías en tu ciudad o municipio?</label>
+            <textarea id="mejorasCiudad" name="mejorasCiudad" rows="3"></textarea>
+          </div>
+          <div class="grid">
+            <label for="comentariosFinales">Comentarios finales</label>
+            <textarea id="comentariosFinales" name="comentariosFinales" rows="3"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- I) Rifa -->
+        <fieldset data-step="rifa">
+          <legend>Rifa interactiva – $40 USD</legend>
+          <div class="note" role="note">
+            <strong>Participa por $40 USD.</strong> 1 ganador/a entre todas las respuestas válidas.
+          </div>
+          <div class="checkbox-group">
+            <label>
+              <input type="checkbox" id="aceptaRifa" name="aceptaRifa" required />
+              Acepto las reglas de la rifa.
+            </label>
+            <button type="button" id="verReglas" class="secondary" style="align-self:flex-start;max-width:220px;margin-top:0.5rem;">Ver reglas</button>
+            <p class="error-message hidden" data-error-for="aceptaRifa">Debes aceptar las reglas para continuar.</p>
+          </div>
+        </fieldset>
+
+        <!-- Resumen -->
+        <fieldset data-step="resumen">
+          <legend>Resumen antes de enviar</legend>
+          <p class="helper-text">Revisa tus respuestas. Puedes volver atrás para corregir cualquier dato.</p>
+          <div id="resumenContenido" class="grid"></div>
+        </fieldset>
+
+        <!-- Éxito -->
+        <fieldset data-step="exito">
+          <legend>¡Gracias!</legend>
+          <div class="success-state" aria-live="assertive">
+            <h2>Tu respuesta fue registrada</h2>
+            <p>Recuerda guardar tu ID de participación.</p>
+            <div class="badge" id="idParticipacionBadge" role="status" aria-live="polite"></div>
+            <p>Puedes cerrar esta ventana. Te contactaremos si resultas ganador/a.</p>
+          </div>
+        </fieldset>
+
+        <div class="actions" aria-label="Controles de avance">
+          <button type="button" class="secondary" id="btnAnterior">Anterior</button>
+          <button type="button" class="primary" id="btnSiguiente">Siguiente</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <dialog id="modalReglas" aria-labelledby="modalTitulo">
+    <h2 id="modalTitulo">Reglas de la rifa</h2>
+    <ul>
+      <li>Mecanismo: se sorteará aleatoriamente entre todas las respuestas válidas recibidas.</li>
+      <li>Fecha estimada del sorteo: dentro de los 5 días posteriores al cierre de la encuesta.</li>
+      <li>Probabilidad de ganar: 1 dividido entre el número total de participantes elegibles.</li>
+      <li>Forma de contacto: mediante correo electrónico o teléfono proporcionado.</li>
+      <li>Plazo para reclamar: 5 días hábiles tras la notificación.</li>
+      <li>No es necesaria ninguna compra para participar.</li>
+    </ul>
+    <button type="button" class="primary" id="cerrarModal">Entendido</button>
+  </dialog>
+
+  <script>
+    const STORAGE_KEY = 'encuesta_habitos_ni';
+    const municipiosPorDepartamento = {
+      // TODO: Personaliza esta lista si lo deseas. Incluye todos los municipios por departamento.
+      "Boaco": ["Boaco", "Camoapa", "San José de los Remates", "Santa Lucía", "Teustepe", "Muy Muy"],
+      "Carazo": ["Jinotepe", "Diriamba", "Dolores", "San Marcos", "Santa Teresa", "La Conquista", "La Paz de Carazo", "El Rosario"],
+      "Chinandega": ["Chinandega", "Chichigalpa", "Corinto", "El Realejo", "El Viejo", "Posoltega", "Puerto Morazán", "Somotillo", "Villanueva", "Cinco Pinos", "San Francisco del Norte", "Santo Tomás del Norte"],
+      "Managua": ["Managua", "Ciudad Sandino", "Tipitapa", "Mateare", "San Rafael del Sur", "El Crucero", "Ticuantepe", "Villa Carlos Fonseca"],
+      "León": ["León", "Achuapa", "El Sauce", "La Paz Centro", "Nagarote", "Quezalguaque", "Santa Rosa del Peñón", "Telica"]
+      // Agrega el resto de departamentos y municipios según sea necesario.
+    };
+
+    const departamentos = Object.keys(municipiosPorDepartamento).sort();
+
+    const form = document.getElementById('encuesta');
+    const fieldsets = Array.from(form.querySelectorAll('fieldset'));
+    const btnAnterior = document.getElementById('btnAnterior');
+    const btnSiguiente = document.getElementById('btnSiguiente');
+    const progressBar = document.querySelector('.progress-bar');
+    const progressFill = progressBar.querySelector('span');
+    const progressLabel = document.getElementById('progress-label');
+    const resumenContenido = document.getElementById('resumenContenido');
+    const badge = document.getElementById('idParticipacionBadge');
+    const modalReglas = document.getElementById('modalReglas');
+    const verReglasBtn = document.getElementById('verReglas');
+    const cerrarModalBtn = document.getElementById('cerrarModal');
+
+    const comboboxControllers = {};
+    let currentStep = 0;
+    let datosGuardados = cargarEstado();
+
+    initCombobox('departamento', departamentos);
+    initCombobox('municipio', []);
+
+    if (datosGuardados) {
+      rellenarFormulario(datosGuardados);
+      const ultimaSeccion = datosGuardados.__meta?.currentStep || 0;
+      mostrarStep(Math.min(ultimaSeccion, fieldsets.length - 2));
+    } else {
+      mostrarStep(0);
+    }
+
+    form.addEventListener('input', debounce(guardarEstado, 400));
+
+    document.getElementById('telefono').addEventListener('input', (event) => {
+      const soloDigitos = event.target.value.replace(/[^\d]/g, '');
+      if (soloDigitos.length > 8) {
+        event.target.value = `+505 ${soloDigitos.slice(-8)}`;
+      } else if (soloDigitos.length === 8) {
+        event.target.value = soloDigitos;
+      }
+    });
+
+    form.addEventListener('change', (event) => {
+      if (event.target.id === 'departamento') {
+        actualizarMunicipios(event.target.value);
+      }
+      if (event.target.id === 'internetCasa') {
+        toggleInternetCampos(event.target.value);
+      }
+      if (event.target.id === 'tienesSmartphone') {
+        toggleSmartphoneCampos(event.target.value);
+      }
+      if (event.target.id === 'tienesHijos') {
+        document.getElementById('cantidadHijos').disabled = event.target.value !== 'si';
+        if (event.target.value !== 'si') {
+          document.getElementById('cantidadHijos').value = '';
+        }
+      }
+      guardarEstado();
+    });
+
+    btnAnterior.addEventListener('click', () => {
+      if (currentStep > 0) {
+        if (fieldsets[currentStep].dataset.step === 'compras' && document.getElementById('tienesSmartphone').value === 'no') {
+          mostrarStep(fieldsets.findIndex(f => f.dataset.step === 'dispositivos'));
+          return;
+        }
+        mostrarStep(currentStep - 1);
+      }
+    });
+
+    btnSiguiente.addEventListener('click', async () => {
+      if (!validarStep(currentStep)) {
+        return;
+      }
+
+      if (fieldsets[currentStep].dataset.step === 'personales') {
+        const edad = Number(document.getElementById('edad').value);
+        if (edad && edad < 18) {
+          alert('Gracias por tu interés. Solo personas mayores de 18 años pueden continuar. Tus datos no serán enviados.');
+          mostrarStep(fieldsets.findIndex(f => f.dataset.step === 'consentimiento'));
+          return;
+        }
+      }
+
+      if (fieldsets[currentStep].dataset.step === 'internet') {
+        toggleInternetCampos(document.getElementById('internetCasa').value);
+      }
+
+      if (fieldsets[currentStep].dataset.step === 'dispositivos') {
+        toggleSmartphoneCampos(document.getElementById('tienesSmartphone').value);
+        if (document.getElementById('tienesSmartphone').value === 'no') {
+          const comprasIndex = fieldsets.findIndex(f => f.dataset.step === 'compras');
+          mostrarStep(comprasIndex);
+          return;
+        }
+      }
+
+      if (currentStep === fieldsets.length - 3) {
+        construirResumen();
+      }
+
+      if (fieldsets[currentStep].dataset.step === 'resumen') {
+        await enviarFormulario();
+        return;
+      }
+
+      mostrarStep(currentStep + 1);
+    });
+
+    verReglasBtn.addEventListener('click', () => {
+      modalReglas.showModal();
+      cerrarModalBtn.focus();
+    });
+
+    cerrarModalBtn.addEventListener('click', () => {
+      modalReglas.close();
+      document.getElementById('aceptaRifa').focus();
+    });
+
+    modalReglas.addEventListener('cancel', (event) => {
+      event.preventDefault();
+      modalReglas.close();
+      document.getElementById('aceptaRifa').focus();
+    });
+
+    function mostrarStep(index) {
+      fieldsets.forEach((fieldset, idx) => {
+        fieldset.classList.toggle('active', idx === index);
+      });
+      currentStep = index;
+      const esUltimo = fieldsets[index].dataset.step === 'exito';
+      const esResumen = fieldsets[index].dataset.step === 'resumen';
+
+      btnAnterior.style.display = esUltimo ? 'none' : 'inline-flex';
+      btnSiguiente.style.display = esUltimo ? 'none' : 'inline-flex';
+
+      if (esResumen) {
+        btnSiguiente.textContent = 'Enviar';
+      } else {
+        btnSiguiente.textContent = 'Siguiente';
+      }
+
+      btnAnterior.disabled = index === 0;
+
+      const totalPasos = fieldsets.length - 1;
+      const progress = Math.round((index / totalPasos) * 100);
+      progressFill.style.width = `${progress}%`;
+      progressBar.setAttribute('aria-valuenow', progress);
+      progressLabel.innerHTML = `<span>Paso ${Math.min(index + 1, totalPasos)} de ${totalPasos}</span><span>${progress}% completado</span>`;
+
+      guardarEstado();
+    }
+
+    function validarStep(index) {
+      const step = fieldsets[index];
+      let valido = true;
+
+      const obligatorios = {
+        personales: ['nombre', 'edad', 'departamento', 'municipio', 'barrio', 'calle', 'referencia', 'email', 'telefono'],
+        consentimiento: ['aceptaPrivacidad'],
+        rifa: ['aceptaRifa']
+      };
+
+      if (obligatorios[step.dataset.step]) {
+        for (const id of obligatorios[step.dataset.step]) {
+          const campo = document.getElementById(id);
+          const error = form.querySelector(`[data-error-for="${id}"]`);
+          if (campo.type === 'checkbox') {
+            if (!campo.checked) {
+              valido = false;
+              error.classList.remove('hidden');
+            } else {
+              error.classList.add('hidden');
+            }
+            continue;
+          }
+
+          if (!campo.value) {
+            valido = false;
+            error.textContent = 'Este campo es obligatorio.';
+            error.classList.remove('hidden');
+          } else if (id === 'departamento' && !departamentos.includes(campo.value)) {
+            valido = false;
+            error.textContent = 'Selecciona un departamento válido de la lista.';
+            error.classList.remove('hidden');
+          } else if (id === 'municipio') {
+            const depto = document.getElementById('departamento').value;
+            const municipiosValidos = municipiosPorDepartamento[depto] || [];
+            if (!municipiosValidos.includes(campo.value)) {
+              valido = false;
+              error.textContent = 'Selecciona un municipio válido según el departamento.';
+              error.classList.remove('hidden');
+            } else {
+              error.classList.add('hidden');
+            }
+          } else if (id === 'email' && !validarEmail(campo.value)) {
+            valido = false;
+            error.textContent = 'Ingresa un correo válido.';
+            error.classList.remove('hidden');
+          } else if (id === 'telefono' && !/^\+?505\s?\d{8}$/.test(campo.value.trim())) {
+            valido = false;
+            error.textContent = 'Ingresa un teléfono válido de Nicaragua (ej. +505 88888888).';
+            error.classList.remove('hidden');
+          } else if (id === 'edad' && Number(campo.value) < 18) {
+            valido = false;
+            error.textContent = 'Debes tener 18 años o más para participar.';
+            error.classList.remove('hidden');
+          } else {
+            error.classList.add('hidden');
+          }
+        }
+      }
+
+      if (step.dataset.step === 'internet' && document.getElementById('internetCasa').value === 'no') {
+        document.getElementById('proveedorInternet').value = '';
+        document.getElementById('tipoConexion').value = '';
+      }
+
+      if (step.dataset.step === 'dispositivos' && document.getElementById('tienesSmartphone').value === 'no') {
+        ['marcaSmartphone', 'soSmartphone', 'antiguedadSmartphone', 'precioSmartphone', 'tipoPlan', 'operadorMovil', 'comparteDatos'].forEach(id => {
+          const campo = document.getElementById(id);
+          campo.value = '';
+        });
+      }
+
+      return valido;
+    }
+
+    function validarEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function initCombobox(id, opciones) {
+      const wrapper = document.querySelector(`.combobox[data-field="${id}"]`);
+      const input = wrapper.querySelector('input');
+      const toggleBtn = wrapper.querySelector('button.toggle');
+      const lista = wrapper.querySelector('.options');
+      let baseOptions = Array.from(opciones);
+
+      function renderOptions(items) {
+        lista.innerHTML = '';
+        if (!items.length) {
+          const emptyBtn = document.createElement('button');
+          emptyBtn.type = 'button';
+          emptyBtn.textContent = 'No se encontraron resultados';
+          emptyBtn.disabled = true;
+          lista.appendChild(emptyBtn);
+          return;
+        }
+        items.forEach((item) => {
+          const optionBtn = document.createElement('button');
+          optionBtn.type = 'button';
+          optionBtn.textContent = item;
+          optionBtn.setAttribute('role', 'option');
+          optionBtn.addEventListener('click', () => {
+            input.value = item;
+            input.setAttribute('aria-expanded', 'false');
+            lista.setAttribute('aria-hidden', 'true');
+            guardarEstado();
+            if (id === 'departamento') {
+              actualizarMunicipios(item);
+            }
+          });
+          lista.appendChild(optionBtn);
+        });
+      }
+
+      renderOptions(baseOptions);
+
+      toggleBtn.addEventListener('click', () => {
+        const expanded = input.getAttribute('aria-expanded') === 'true';
+        input.setAttribute('aria-expanded', String(!expanded));
+        lista.setAttribute('aria-hidden', String(expanded));
+        if (!expanded) {
+          lista.querySelector('button:not(:disabled)')?.focus();
+        }
+      });
+
+      input.addEventListener('focus', () => {
+        input.select();
+      });
+
+      input.addEventListener('input', () => {
+        const term = input.value.toLowerCase();
+        const filtered = baseOptions.filter((opt) => opt.toLowerCase().includes(term));
+        renderOptions(filtered);
+        lista.setAttribute('aria-hidden', 'false');
+        input.setAttribute('aria-expanded', 'true');
+      });
+
+      input.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          lista.querySelector('button:not(:disabled)')?.focus();
+        }
+      });
+
+      input.addEventListener('blur', () => {
+        setTimeout(() => {
+          lista.setAttribute('aria-hidden', 'true');
+          input.setAttribute('aria-expanded', 'false');
+        }, 150);
+      });
+
+      comboboxControllers[id] = {
+        setOptions(newOptions) {
+          baseOptions = Array.from(newOptions);
+          renderOptions(baseOptions);
+        }
+      };
+      return comboboxControllers[id];
+    }
+
+    function actualizarMunicipios(departamento) {
+      const municipios = municipiosPorDepartamento[departamento] || [];
+      if (comboboxControllers.municipio) {
+        comboboxControllers.municipio.setOptions(municipios);
+      }
+      const municipioInput = document.getElementById('municipio');
+      municipioInput.value = '';
+      municipioInput.disabled = municipios.length === 0;
+    }
+
+    function toggleInternetCampos(valor) {
+      const disable = valor === 'no';
+      ['proveedorInternet', 'otroProveedor', 'tipoConexion', 'velocidadPercibida', 'estabilidadPercibida', 'gastoMensual', 'usoDiario'].forEach(id => {
+        const campo = document.getElementById(id);
+        if (disable) {
+          campo.value = '';
+          campo.setAttribute('disabled', 'true');
+        } else {
+          campo.removeAttribute('disabled');
+        }
+      });
+    }
+
+    function toggleSmartphoneCampos(valor) {
+      const disable = valor === 'no';
+      ['marcaSmartphone', 'soSmartphone', 'antiguedadSmartphone', 'precioSmartphone', 'tipoPlan', 'operadorMovil', 'comparteDatos'].forEach(id => {
+        const campo = document.getElementById(id);
+        if (disable) {
+          campo.value = '';
+          campo.setAttribute('disabled', 'true');
+        } else {
+          campo.removeAttribute('disabled');
+        }
+      });
+    }
+
+    function toJSON() {
+      const timestampISO = new Date().toISOString();
+      const internetCasa = document.getElementById('internetCasa').value;
+      const tieneSmartphone = document.getElementById('tienesSmartphone').value;
+
+      return {
+        timestampISO,
+        personal: {
+          nombre: document.getElementById('nombre').value || null,
+          edad: document.getElementById('edad').value ? Number(document.getElementById('edad').value) : null,
+          departamento: document.getElementById('departamento').value || null,
+          municipio: document.getElementById('municipio').value || null,
+          direccion: {
+            barrio: document.getElementById('barrio').value || null,
+            calle: document.getElementById('calle').value || null,
+            referencia: document.getElementById('referencia').value || null
+          },
+          email: document.getElementById('email').value || null,
+          telefono: document.getElementById('telefono').value || null
+        },
+        hogar: {
+          tieneHijos: valueToBoolean(document.getElementById('tienesHijos').value),
+          cantidadHijos: document.getElementById('cantidadHijos').value ? Number(document.getElementById('cantidadHijos').value) : null,
+          personasEnHogar: document.getElementById('personasHogar').value ? Number(document.getElementById('personasHogar').value) : null
+        },
+        internet: {
+          tieneInternetCasa: valueToBoolean(internetCasa),
+          proveedor: document.getElementById('proveedorInternet').value || null,
+          otroProveedor: document.getElementById('otroProveedor').value || null,
+          tipoConexion: document.getElementById('tipoConexion').value || null,
+          velocidadPercibida: document.getElementById('velocidadPercibida').value || null,
+          estabilidadPercibida: document.getElementById('estabilidadPercibida').value || null,
+          gastoMensual: document.getElementById('gastoMensual').value || null,
+          usoDiarioHoras: document.getElementById('usoDiario').value ? Number(document.getElementById('usoDiario').value) : null
+        },
+        dispositivos: {
+          tieneSmartphone: valueToBoolean(tieneSmartphone),
+          marca: document.getElementById('marcaSmartphone').value || null,
+          sistemaOperativo: document.getElementById('soSmartphone').value || null,
+          antiguedad: document.getElementById('antiguedadSmartphone').value || null,
+          rangoPrecio: document.getElementById('precioSmartphone').value || null,
+          tipoPlan: document.getElementById('tipoPlan').value || null,
+          operador: document.getElementById('operadorMovil').value || null,
+          comparteDatos: valueToBoolean(document.getElementById('comparteDatos').value)
+        },
+        medios: {
+          plataformas: getCheckedValues('plataformas'),
+          tiempoDiarioHoras: document.getElementById('tiempoPlataformas').value ? Number(document.getElementById('tiempoPlataformas').value) : null,
+          propositoPrincipal: document.getElementById('propositoPlataformas').value || null
+        },
+        compras: {
+          categorias: getCheckedValues('categoriasCompra'),
+          frecuencia: document.getElementById('frecuenciaCompra').value || null,
+          canales: getSelectMultipleValues('canalesCompra'),
+          metodosPago: getSelectMultipleValues('metodosPago'),
+          factoresDecision: getSelectMultipleValues('factoresDecision')
+        },
+        servicios: {
+          suscripciones: getSelectMultipleValues('suscripciones'),
+          transporte: document.getElementById('transporte').value || null,
+          tiempoLibre: getSelectMultipleValues('tiempoLibre'),
+          comerFuera: document.getElementById('comerFuera').value || null,
+          viajes: document.getElementById('viajesNicaragua').value || null,
+          motivoViajes: document.getElementById('motivoViajes').value || null
+        },
+        publicidad: {
+          publicidadRecordada: getSelectMultipleValues('publicidadRecordada'),
+          motivaMarca: getSelectMultipleValues('motivaMarca'),
+          marcasLocales: document.getElementById('marcasLocales').value || null
+        },
+        satisfaccion: {
+          internet: document.getElementById('satisfaccionInternet').value ? Number(document.getElementById('satisfaccionInternet').value) : null,
+          telefonia: document.getElementById('satisfaccionTelefonia').value ? Number(document.getElementById('satisfaccionTelefonia').value) : null,
+          mejorasCiudad: document.getElementById('mejorasCiudad').value || null
+        },
+        comentarios: document.getElementById('comentariosFinales').value || null,
+        rifa: {
+          aceptaReglas: document.getElementById('aceptaRifa').checked,
+          idParticipacion: badge.dataset.idParticipacion || null
+        },
+        metadata: {
+          userAgent: navigator.userAgent,
+          anonymous: false
+        }
+      };
+    }
+
+    function valueToBoolean(value) {
+      if (value === 'si') return true;
+      if (value === 'no') return false;
+      return null;
+    }
+
+    function getCheckedValues(containerId) {
+      return Array.from(document.querySelectorAll(`#${containerId} input[type="checkbox"]:checked`)).map((input) => input.value);
+    }
+
+    function getSelectMultipleValues(id) {
+      return Array.from(document.getElementById(id)?.selectedOptions || []).map((opt) => opt.value);
+    }
+
+    function construirResumen() {
+      const data = toJSON();
+      resumenContenido.innerHTML = '';
+
+      const secciones = [
+        { titulo: 'Datos personales', contenido: data.personal },
+        { titulo: 'Hogar', contenido: data.hogar },
+        { titulo: 'Internet', contenido: data.internet },
+        { titulo: 'Dispositivos', contenido: data.dispositivos },
+        { titulo: 'Medios y redes', contenido: data.medios },
+        { titulo: 'Compras y finanzas', contenido: data.compras },
+        { titulo: 'Servicios y estilo de vida', contenido: data.servicios },
+        { titulo: 'Publicidad y motivaciones', contenido: data.publicidad },
+        { titulo: 'Satisfacción y comentarios', contenido: { ...data.satisfaccion, comentarios: data.comentarios } }
+      ];
+
+      secciones.forEach((seccion) => {
+        const table = document.createElement('table');
+        table.className = 'summary-table';
+        const caption = document.createElement('caption');
+        caption.textContent = seccion.titulo;
+        caption.style.cssText = 'text-align:left;font-weight:700;padding:0.5rem 0;';
+        table.appendChild(caption);
+
+        Object.entries(seccion.contenido).forEach(([clave, valor]) => {
+          const fila = document.createElement('tr');
+          const th = document.createElement('th');
+          th.textContent = formatearClave(clave);
+          const td = document.createElement('td');
+          td.textContent = formatearValor(valor);
+          fila.append(th, td);
+          table.appendChild(fila);
+        });
+
+        resumenContenido.appendChild(table);
+      });
+    }
+
+    function formatearClave(clave) {
+      return clave
+        .replace(/([A-Z])/g, ' $1')
+        .replace(/_/g, ' ')
+        .replace(/\b\w/g, (l) => l.toUpperCase());
+    }
+
+    function formatearValor(valor) {
+      if (Array.isArray(valor)) {
+        return valor.length ? valor.join(', ') : 'Sin especificar';
+      }
+      if (valor === null || valor === undefined || valor === '') {
+        return 'Sin especificar';
+      }
+      if (typeof valor === 'boolean') {
+        return valor ? 'Sí' : 'No';
+      }
+      if (typeof valor === 'object') {
+        const pares = Object.entries(valor).filter(([, v]) => v !== null && v !== undefined && v !== '');
+        return pares.length
+          ? pares.map(([k, v]) => `${formatearClave(k)}: ${v}`).join(', ')
+          : 'Sin especificar';
+      }
+      return valor;
+    }
+
+    async function enviarFormulario() {
+      const data = toJSON();
+      const payload = JSON.stringify(data);
+      btnSiguiente.disabled = true;
+      btnSiguiente.textContent = 'Enviando...';
+
+      try {
+        const respuesta = await fetch('https://SCRIPT_URL_DE_TU_WEB_APP', { // Reemplaza con la URL de tu Apps Script
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: payload
+        });
+
+        if (!respuesta.ok) {
+          throw new Error('Error al enviar');
+        }
+
+        const resultado = await respuesta.json().catch(() => ({}));
+        const id = resultado.idParticipacion || generarIdParticipacion();
+        badge.textContent = `ID de participación: ${id}`;
+        badge.dataset.idParticipacion = id;
+        limpiarStorage();
+        mostrarStep(fieldsets.findIndex(f => f.dataset.step === 'exito'));
+      } catch (error) {
+        console.error('No se pudo enviar:', error);
+        localStorage.setItem(`${STORAGE_KEY}_pendiente`, payload);
+        alert('Ocurrió un problema al enviar. Tus respuestas se guardaron para reintentar luego. Verifica tu conexión e intenta nuevamente.');
+        btnSiguiente.disabled = false;
+        btnSiguiente.textContent = 'Enviar';
+      }
+    }
+
+    function generarIdParticipacion() {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      let id = '';
+      for (let i = 0; i < 8; i += 1) {
+        id += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return id;
+    }
+
+    function guardarEstado() {
+      const data = toJSON();
+      const wrapper = {
+        ...data,
+        __meta: {
+          currentStep,
+          updatedAt: new Date().toISOString(),
+          aceptaPrivacidad: document.getElementById('aceptaPrivacidad').checked
+        }
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(wrapper));
+    }
+
+    function cargarEstado() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      try {
+        return JSON.parse(raw);
+      } catch (error) {
+        console.warn('No se pudo parsear el estado guardado', error);
+        return null;
+      }
+    }
+
+    function limpiarStorage() {
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(`${STORAGE_KEY}_pendiente`);
+    }
+
+    function rellenarFormulario(data) {
+      document.getElementById('aceptaPrivacidad').checked = Boolean(data.__meta?.aceptaPrivacidad);
+      document.getElementById('nombre').value = data.personal?.nombre || '';
+      document.getElementById('edad').value = data.personal?.edad || '';
+      document.getElementById('departamento').value = data.personal?.departamento || '';
+      actualizarMunicipios(document.getElementById('departamento').value);
+      document.getElementById('municipio').value = data.personal?.municipio || '';
+      document.getElementById('barrio').value = data.personal?.direccion?.barrio || '';
+      document.getElementById('calle').value = data.personal?.direccion?.calle || '';
+      document.getElementById('referencia').value = data.personal?.direccion?.referencia || '';
+      document.getElementById('email').value = data.personal?.email || '';
+      document.getElementById('telefono').value = data.personal?.telefono || '';
+
+      document.getElementById('tienesHijos').value = data.hogar?.tieneHijos === null ? '' : data.hogar?.tieneHijos ? 'si' : 'no';
+      document.getElementById('cantidadHijos').value = data.hogar?.cantidadHijos ?? '';
+      document.getElementById('personasHogar').value = data.hogar?.personasEnHogar ?? '';
+      document.getElementById('cantidadHijos').disabled = document.getElementById('tienesHijos').value !== 'si';
+
+      document.getElementById('internetCasa').value = data.internet?.tieneInternetCasa === null ? '' : data.internet?.tieneInternetCasa ? 'si' : 'no';
+      document.getElementById('proveedorInternet').value = data.internet?.proveedor || '';
+      document.getElementById('otroProveedor').value = data.internet?.otroProveedor || '';
+      document.getElementById('tipoConexion').value = data.internet?.tipoConexion || '';
+      document.getElementById('velocidadPercibida').value = data.internet?.velocidadPercibida || '';
+      document.getElementById('estabilidadPercibida').value = data.internet?.estabilidadPercibida || '';
+      document.getElementById('gastoMensual').value = data.internet?.gastoMensual || '';
+      document.getElementById('usoDiario').value = data.internet?.usoDiarioHoras ?? '';
+      toggleInternetCampos(document.getElementById('internetCasa').value);
+
+      document.getElementById('tienesSmartphone').value = data.dispositivos?.tieneSmartphone === null ? '' : data.dispositivos?.tieneSmartphone ? 'si' : 'no';
+      document.getElementById('marcaSmartphone').value = data.dispositivos?.marca || '';
+      document.getElementById('soSmartphone').value = data.dispositivos?.sistemaOperativo || '';
+      document.getElementById('antiguedadSmartphone').value = data.dispositivos?.antiguedad || '';
+      document.getElementById('precioSmartphone').value = data.dispositivos?.rangoPrecio || '';
+      document.getElementById('tipoPlan').value = data.dispositivos?.tipoPlan || '';
+      document.getElementById('operadorMovil').value = data.dispositivos?.operador || '';
+      document.getElementById('comparteDatos').value = data.dispositivos?.comparteDatos === null ? '' : data.dispositivos?.comparteDatos ? 'si' : 'no';
+      toggleSmartphoneCampos(document.getElementById('tienesSmartphone').value);
+
+      restaurarCheckboxes('plataformas', data.medios?.plataformas || []);
+      document.getElementById('tiempoPlataformas').value = data.medios?.tiempoDiarioHoras ?? '';
+      document.getElementById('propositoPlataformas').value = data.medios?.propositoPrincipal || '';
+
+      restaurarCheckboxes('categoriasCompra', data.compras?.categorias || []);
+      document.getElementById('frecuenciaCompra').value = data.compras?.frecuencia || '';
+      restaurarSelectMultiple('canalesCompra', data.compras?.canales || []);
+      restaurarSelectMultiple('metodosPago', data.compras?.metodosPago || []);
+      restaurarSelectMultiple('factoresDecision', data.compras?.factoresDecision || []);
+
+      restaurarSelectMultiple('suscripciones', data.servicios?.suscripciones || []);
+      document.getElementById('transporte').value = data.servicios?.transporte || '';
+      restaurarSelectMultiple('tiempoLibre', data.servicios?.tiempoLibre || []);
+      document.getElementById('comerFuera').value = data.servicios?.comerFuera || '';
+      document.getElementById('viajesNicaragua').value = data.servicios?.viajes || '';
+      document.getElementById('motivoViajes').value = data.servicios?.motivoViajes || '';
+
+      restaurarSelectMultiple('publicidadRecordada', data.publicidad?.publicidadRecordada || []);
+      restaurarSelectMultiple('motivaMarca', data.publicidad?.motivaMarca || []);
+      document.getElementById('marcasLocales').value = data.publicidad?.marcasLocales || '';
+
+      document.getElementById('satisfaccionInternet').value = data.satisfaccion?.internet ?? '';
+      document.getElementById('satisfaccionTelefonia').value = data.satisfaccion?.telefonia ?? '';
+      document.getElementById('mejorasCiudad').value = data.satisfaccion?.mejorasCiudad || '';
+
+      document.getElementById('comentariosFinales').value = data.comentarios || '';
+      document.getElementById('aceptaRifa').checked = data.rifa?.aceptaReglas || false;
+      badge.textContent = data.rifa?.idParticipacion ? `ID de participación: ${data.rifa.idParticipacion}` : '';
+      if (data.rifa?.idParticipacion) {
+        badge.dataset.idParticipacion = data.rifa.idParticipacion;
+      }
+    }
+
+    function restaurarCheckboxes(containerId, valores) {
+      Array.from(document.querySelectorAll(`#${containerId} input[type="checkbox"]`)).forEach((checkbox) => {
+        checkbox.checked = valores.includes(checkbox.value);
+      });
+    }
+
+    function restaurarSelectMultiple(id, valores) {
+      Array.from(document.getElementById(id)?.options || []).forEach((option) => {
+        option.selected = valores.includes(option.value);
+      });
+    }
+
+    function debounce(fn, delay = 300) {
+      let timeout;
+      return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn.apply(this, args), delay);
+      };
+    }
+
+    const pendiente = localStorage.getItem(`${STORAGE_KEY}_pendiente`);
+    if (pendiente) {
+      if (confirm('Tienes una respuesta pendiente por enviar. ¿Deseas intentar enviarla ahora?')) {
+        fetch('https://SCRIPT_URL_DE_TU_WEB_APP', { // Reemplaza con la URL de tu Apps Script
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: pendiente
+        })
+          .then((res) => {
+            if (!res.ok) throw new Error('Error al reenviar');
+            return res.json().catch(() => ({}));
+          })
+          .then((resultado) => {
+            const id = resultado.idParticipacion || generarIdParticipacion();
+            badge.textContent = `ID de participación: ${id}`;
+            badge.dataset.idParticipacion = id;
+            limpiarStorage();
+            mostrarStep(fieldsets.findIndex(f => f.dataset.step === 'exito'));
+          })
+          .catch(() => alert('Aún no fue posible enviar. Intentaremos más tarde o guarda el mensaje.'));
+      }
+    }
+  </script>
+</body>
+</html>
+<!--
+Ejemplo de JSON generado:
+{
+  "timestampISO": "2024-05-15T18:27:00.000Z",
+  "personal": {
+    "nombre": "Ana Pérez",
+    "edad": 29,
+    "departamento": "Managua",
+    "municipio": "Managua",
+    "direccion": {
+      "barrio": "Colonia Centroamérica",
+      "calle": "Pista principal",
+      "referencia": "Casa blanca portón azul"
+    },
+    "email": "ana@example.com",
+    "telefono": "+505 88888888"
+  },
+  "hogar": { "tieneHijos": false, "cantidadHijos": null, "personasEnHogar": 3 },
+  "internet": { "tieneInternetCasa": true, "proveedor": "Claro", "otroProveedor": null, "tipoConexion": "Fibra", "velocidadPercibida": "Rapida", "estabilidadPercibida": "Estable", "gastoMensual": "26-40", "usoDiarioHoras": 6 },
+  "dispositivos": { "tieneSmartphone": true, "marca": "Samsung", "sistemaOperativo": "Android", "antiguedad": "1-2 años", "rangoPrecio": "300-499", "tipoPlan": "Pospago", "operador": "Claro", "comparteDatos": false },
+  "medios": { "plataformas": ["WhatsApp", "YouTube"], "tiempoDiarioHoras": 4, "propositoPrincipal": "Comunicacion" },
+  "compras": { "categorias": ["Alimentos", "Tecnologia"], "frecuencia": "Mensual", "canales": ["Marketplaces", "Apps delivery"], "metodosPago": ["Tarjeta", "Billetera movil"], "factoresDecision": ["Precio", "Calidad"] },
+  "servicios": { "suscripciones": ["Streaming video"], "transporte": "Bus", "tiempoLibre": ["Series", "Leer"], "comerFuera": "1 vez por semana", "viajes": "Trimestral", "motivoViajes": "Turismo" },
+  "publicidad": { "publicidadRecordada": ["Redes"], "motivaMarca": ["Promociones"], "marcasLocales": "Prefiero no responder" },
+  "satisfaccion": { "internet": 4, "telefonia": 3, "mejorasCiudad": "Más áreas verdes" },
+  "comentarios": "Gracias por la encuesta",
+  "rifa": { "aceptaReglas": true, "idParticipacion": "AB12CD34" },
+  "metadata": { "userAgent": "Mozilla/5.0...", "anonymous": false }
+}
+
+Instrucciones Apps Script rápidas:
+1. En tu proyecto de Google Apps Script, pega la URL de tu Web App en los fetch (buscar texto SCRIPT_URL_DE_TU_WEB_APP).
+2. Publica el Web App con permisos "Cualquiera con el enlace" y método doPost(e) para guardar los datos recibidos.
+3. En doPost(e), parsea e.postData.contents como JSON, procesa y devuelve {"idParticipacion":"TU_ID_GENERADO"} como respuesta.
+-->
